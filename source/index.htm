@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.js"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>
+		<script src="content/scripts/jscom.metro-tools.js"></script>
+		
+		<link href="content/css/jscom.metro.css" rel="stylesheet" media="all" />
+		
+		<style>
+			body { font-family: 'Helvetica LT Std', 'Segoe WP Semilight', 'Segoe UI'; }
+		</style>
+		
+		<script>
+			$(document).ready(function(event){
+				$('#TestNotifier').click(function(event){
+					event.preventDefault();
+					
+					$.notify('<a href="index.htm">hello, world!</a>');
+				});
+			});
+		</script>
+	</head>
+	
+	<body>
+		
+		<h1>jsMetro Demos</h1>
+		
+		<h2>Notifications</h2>
+		<ul>
+			<li><a id="TestNotifier" href="#">Create a Notification</a></li>
+		</ul>
+	</body>
+</html>

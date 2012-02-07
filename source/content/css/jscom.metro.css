@@ -1,0 +1,37 @@
+#JSNotification { 
+	z-index: 999;
+	
+	background: #00b4ff; 
+	color: #fff !important; 
+	
+	position: fixed;
+	left: 0; top: -40px; 
+	
+	padding: 0;
+	margin: 0;
+	
+	width: 100%; 
+	height: 40px; 
+	
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+
+	font: 14px/1em 'Segoe WP', 'Segoe UI', Tahoma, Arial, Sans-Serif;
+}
+
+#JSNotification.active { top: 0px; }
+
+#JSNotification p { position: absolute; left: 50px; top: 10px; padding: 0; margin: 0; }
+#JSNotification .datestamp { margin: 0px 10px 0 0; padding: 0;  }
+#JSNotification .message { margin: 0px 0 0 0; padding: 0; }
+
+#JSNotification .progress { 
+	background: black;
+	height: 2px; width: 100%; 
+	
+	position: absolute; 
+	bottom: 0px; left: 0px; 
+}
+
+#JSNotification a { color: #fff; text-decoration: underline; }

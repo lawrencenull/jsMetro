@@ -9,3 +9,7 @@ The easiest way to get started is to view the samples at [jsmetro.johnsedlak.com
 ## Contributing
 
 If you want to help/contribute, I am looking for complete Metro widgets and the like that follow the specs & guidelines set forth by the existing js files. In the future I will update this with a stricter set of guidelines.
+
+## Live Samples & Demos
+
+WIP.

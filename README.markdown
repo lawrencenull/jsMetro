@@ -12,4 +12,4 @@ If you want to help/contribute, I am looking for complete Metro widgets and the 
 
 ## Live Samples & Demos
 
-WIP.
+WIP..

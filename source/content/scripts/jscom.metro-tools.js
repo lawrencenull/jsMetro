@@ -3,7 +3,7 @@
 		var bodyElement = $('body');
 		
 		var controller = bodyElement.data('jscom.NotifyController');
-		if(controller == undefined || controller == null){
+		if (controller == null) {
 			controller = new NotifyController(options);
 			bodyElement.data('jscom.NotifyController', controller);
 		}
@@ -13,14 +13,14 @@
 		return controller;
     };
 	
-	function NotifyController(options){
+	function NotifyController(options) {
 		// Helper elements & variables
-		var bodyElement = $('body');
-		var scope = this;
+		var bodyElement = $('body'),
+			that = this;
 		
 		var notificationElement = bodyElement.find('#JSNotification');
 
-		if(notificationElement == undefined || notificationElement.length <= 0){
+		if (notificationElement == undefined || notificationElement.length <= 0) {
 			bodyElement.append('<div id="JSNotification"></div>');
 			notificationElement = bodyElement.find('#JSNotification');
 			notificationElement.html('<p></p><div class="progress"><!--progress--></div>');
@@ -33,18 +33,26 @@
 		this.timestamp = 0;
 		
 		this.target.hover(
-			function() { $(this).addClass('mouse-over'); },
-			function() { $(this).removeClass('mouse-over'); scope.onMouseOut(); }
+			function() { 
+				$(this).addClass('mouse-over'); 
+			},
+			function() { 
+				$(this).removeClass('mouse-over'); that.onMouseOut(); 
+			}
 		);
 		
-		this.target.every(1, 0, function(){
-			scope.update();
+		this.target.every(1, 0, function() {
+			that.update();
 		});
 	};
 	
-	NotifyController.prototype.updateSettings = function(options){
+	NotifyController.prototype.updateSettings = function(options) {
 		/* Setup the settings & options */
-		var defaults = { timeout: 4000, cssClass: 'default' };
+		var defaults = { 
+			timeout: 4000, 
+			cssClass: 'default' 
+		};
+		
         var settings = $.extend(
             { }, 
             defaults, 
@@ -55,8 +63,8 @@
 		this.cssClass = settings.cssClass;
 	};
 	
-	NotifyController.prototype.notify = function(message, options){
-		if(this.timer != null){
+	NotifyController.prototype.notify = function(message, options) {
+		if (this.timer != null) {
 			clearTimeout(this.timer);
 			this.timer = null;
 		}
@@ -76,15 +84,17 @@
 		this.target.addClass('active').addClass(this.cssClass);
 		
 		
-		var scope = this;
+		var that = this;
 		this.timer = setTimeout(
-			function() { scope.close(); }, 
+			function() { 
+				that.close(); 
+			}, 
 			this.timeout
 		);
 	};
 	
-	NotifyController.prototype.update = function(){
-		if(this.target.hasClass('mouse-over')){		
+	NotifyController.prototype.update = function() {
+		if (this.target.hasClass('mouse-over')) {		
 			this.timestamp = new Date();
 			
 			return;
@@ -94,28 +104,32 @@
 		var delta = time - this.timestamp;
 		
 		var percent = (delta / this.timeout * 100).toFixed(0);
-		if(percent > 100) percent = 100;
+		if (percent > 100) {
+			percent = 100;
+		}
 		
 		this.target.find('.progress').css('width', percent.toString() + '%');
 	};
 	
-	NotifyController.prototype.onMouseOut = function(){
-		if(this.timer != undefined && this.timer != null){
+	NotifyController.prototype.onMouseOut = function() {
+		if (this.timer != null) {
 			clearTimeout(this.timer);
 			this.timer = null;
 		}
 		
-		var scope = this;
+		var that = this;
 		this.timer = setTimeout(
-			function() { scope.close(); }, 
+			function() { 
+				that.close(); 
+			}, 
 			this.timeout
 		);
 		
 		this.timestamp = new Date();
 	};
 	
-	NotifyController.prototype.close = function(){
-		if(this.target.hasClass('mouse-over')){
+	NotifyController.prototype.close = function() {
+		if (this.target.hasClass('mouse-over')) {
 			return;
 		}
 		
@@ -123,12 +137,14 @@
 	};
 	
 	/* EVERY CONTROLLER */
-	$.fn.every = function(interval, pauseInterval, callback, id){
-		if(id == undefined || id == null) { id = ''; }
+	$.fn.every = function(interval, pauseInterval, callback, id) {
+		if (id == null) { 
+			id = ''; 
+		}
 		
 		var controller = this.data('jscom.EveryController-' + id);
 		
-		if(controller == undefined || controller == null){
+		if (controller == null) {
 			controller = new EveryController(this, interval, pauseInterval, callback);
 		
 			this.data('jscom.EveryController-' + id, controller);
@@ -139,7 +155,7 @@
 		return controller;
 	};
 
-	function EveryController(element, interval, pauseInterval, callback){
+	function EveryController(element, interval, pauseInterval, callback) {
 		this.element = element;
 		this.interval = interval;
 		this.pauseInterval = pauseInterval;
@@ -148,18 +164,18 @@
 		this.timerId = null;
 	}
 
-	EveryController.prototype.init = function(){
+	EveryController.prototype.init = function() {
 		this.reset();
 	}
 
-	EveryController.prototype.reset = function(){
+	EveryController.prototype.reset = function() {
 		// Clear the timer
 		clearTimeout(this.timerId);
 		
-		var scope = this;
+		var that = this;
 		
 		// Wait for a bit...
-		this.timerId = setTimeout(function() { scope.timeOut(); }, this.interval);
+		this.timerId = setTimeout(function() { that.timeOut(); }, this.interval);
 	}
 
 	EveryController.prototype.timeOut = function () {
@@ -170,8 +186,13 @@
 		}
 
 		// Setup the delay (adjust for animation)
-		var scope = this;
-		this.timerId = setTimeout(function () { scope.reset(); }, this.pauseInterval);
+		var that = this;
+		this.timerId = setTimeout(
+			function () { 
+				that.reset(); 
+			},
+			this.pauseInterval
+		);
 	}
 
 })(jQuery);

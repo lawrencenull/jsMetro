@@ -46,95 +46,98 @@
 		});
 	};
 	
-	NotifyController.prototype.updateSettings = function(options) {
-		/* Setup the settings & options */
-		var defaults = { 
-			timeout: 4000, 
-			cssClass: 'default' 
-		};
-		
-        var settings = $.extend(
-            { }, 
-            defaults, 
-            options
-        );
-		
-		this.timeout = settings.timeout;
-		this.cssClass = settings.cssClass;
-	};
+	NotifyController.prototype = {
 	
-	NotifyController.prototype.notify = function(message, options) {
-		if (this.timer != null) {
-			clearTimeout(this.timer);
-			this.timer = null;
-		}
-		this.target.attr('class', '');
-		this.updateSettings(options);
-		
-		var timestamp = new Date();
-
-		this.target.find('p').html(
-			'<span class="datestamp">' + 
-			timestamp.format("h:MM:ss TT").toString() + 
-			'</span><span class="message">' + 
-			message + 
-			'</span>'
-		)
-		this.timestamp = timestamp;
-		this.target.addClass('active').addClass(this.cssClass);
-		
-		
-		var that = this;
-		this.timer = setTimeout(
-			function() { 
-				that.close(); 
-			}, 
-			this.timeout
-		);
-	};
-	
-	NotifyController.prototype.update = function() {
-		if (this.target.hasClass('mouse-over')) {		
-			this.timestamp = new Date();
+		updateSettings: function(options) {
+			/* Setup the settings & options */
+			var defaults = { 
+				timeout: 4000, 
+				cssClass: 'default' 
+			};
 			
-			return;
-		}
+			var settings = $.extend(
+				{ }, 
+				defaults, 
+				options
+			);
+			
+			this.timeout = settings.timeout;
+			this.cssClass = settings.cssClass;
+		},
 		
-		var time = new Date();
-		var delta = time - this.timestamp;
-		
-		var percent = (delta / this.timeout * 100).toFixed(0);
-		if (percent > 100) {
-			percent = 100;
-		}
-		
-		this.target.find('.progress').css('width', percent.toString() + '%');
-	};
+		notify: function(message, options) {
+			if (this.timer != null) {
+				clearTimeout(this.timer);
+				this.timer = null;
+			}
+			this.target.attr('class', '');
+			this.updateSettings(options);
+			
+			var timestamp = new Date();
+
+			this.target.find('p').html(
+				'<span class="datestamp">' + 
+				timestamp.format("h:MM:ss TT").toString() + 
+				'</span><span class="message">' + 
+				message + 
+				'</span>'
+			)
+			this.timestamp = timestamp;
+			this.target.addClass('active').addClass(this.cssClass);
+			
+			
+			var that = this;
+			this.timer = setTimeout(
+				function() { 
+					that.close(); 
+				}, 
+				this.timeout
+			);
+		},
 	
-	NotifyController.prototype.onMouseOut = function() {
-		if (this.timer != null) {
-			clearTimeout(this.timer);
-			this.timer = null;
-		}
-		
-		var that = this;
-		this.timer = setTimeout(
-			function() { 
-				that.close(); 
-			}, 
-			this.timeout
-		);
-		
-		this.timestamp = new Date();
-	};
+		update: function() {
+			if (this.target.hasClass('mouse-over')) {		
+				this.timestamp = new Date();
+				
+				return;
+			}
+			
+			var time = new Date();
+			var delta = time - this.timestamp;
+			
+			var percent = (delta / this.timeout * 100).toFixed(0);
+			if (percent > 100) {
+				percent = 100;
+			}
+			
+			this.target.find('.progress').css('width', percent.toString() + '%');
+		},
 	
-	NotifyController.prototype.close = function() {
-		if (this.target.hasClass('mouse-over')) {
-			return;
+		onMouseOut: function() {
+			if (this.timer != null) {
+				clearTimeout(this.timer);
+				this.timer = null;
+			}
+			
+			var that = this;
+			this.timer = setTimeout(
+				function() { 
+					that.close(); 
+				}, 
+				this.timeout
+			);
+			
+			this.timestamp = new Date();
+		},
+	
+		close: function() {
+			if (this.target.hasClass('mouse-over')) {
+				return;
+			}
+			
+			this.target.removeClass('active'); //.removeClass(this.cssClass);
 		}
-		
-		this.target.removeClass('active'); //.removeClass(this.cssClass);
-	};
+	}
 	
 	/* EVERY CONTROLLER */
 	$.fn.every = function(interval, pauseInterval, callback, id) {

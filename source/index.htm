@@ -10,14 +10,33 @@
 		
 		<style>
 			body { font-family: 'Helvetica LT Std', 'Segoe WP Semilight', 'Segoe UI'; }
+			.red { background: red !important; }
 		</style>
 		
 		<script>
 			$(document).ready(function(event){
-				$('#TestNotifier').click(function(event){
+				$('#TestNotify').click(function(event){
 					event.preventDefault();
 					
 					$.notify('<a href="index.htm">hello, world!</a>');
+				});
+				
+				$('#TestNotifyTimeout').click(function(event){
+					event.preventDefault();
+					
+					$.notify(
+						'<a href="index.htm">hello, world!</a>',
+						{ timeout: 1000 }						
+					);
+				});
+				
+				$('#TestNotifyTimeoutColor').click(function(event){
+					event.preventDefault();
+					
+					$.notify(
+						'<a href="index.htm">hello, world!</a>',
+						{ timeout: 1000, cssClass: 'red' }						
+					);
 				});
 			});
 		</script>
@@ -29,7 +48,9 @@
 		
 		<h2>Notifications</h2>
 		<ul>
-			<li><a id="TestNotifier" href="#">Create a Notification</a></li>
+			<li><a id="TestNotify" href="#">Create a Notification</a></li>
+			<li><a id="TestNotifyTimeout" href="#">Create a 1 Second Notification</a></li>
+			<li><a id="TestNotifyTimeoutColor" href="#">Create a 1 Second, Red Notification</a></li>
 		</ul>
 	</body>
 </html>

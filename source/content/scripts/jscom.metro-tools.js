@@ -8,7 +8,7 @@
 			bodyElement.data('jscom.NotifyController', controller);
 		}
 		
-		controller.notify(message);
+		controller.notify(message, options);
 		
 		return controller;
     };
@@ -50,8 +50,19 @@
 		});
 	};
 	
-	NotifyController.prototype.notify = function(message){
+	NotifyController.prototype.notify = function(message, options){
 		var timestamp = new Date();
+		
+		/* Setup the settings & options */
+		var defaults = { timeout: 4000, cssClass: 'default' };
+        var settings = $.extend(
+            { }, 
+            defaults, 
+            options
+        );
+		
+		this.timeout = settings.timeout;
+		this.cssClass = settings.cssClass;
 
 		this.target.find('p').html(
 			'<span class="datestamp">' + 

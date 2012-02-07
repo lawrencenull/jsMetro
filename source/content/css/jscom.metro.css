@@ -13,9 +13,9 @@
 	width: 100%; 
 	height: 40px; 
 	
-	-webkit-transition: all 0.25s ease-in-out;
-	-moz-transition: all 0.25s ease-in-out;
-	transition: all 0.25s ease-in-out;
+	-webkit-transition: position 0.25s ease-in-out;
+	-moz-transition: position 0.25s ease-in-out;
+	transition: position 0.25s ease-in-out;
 
 	font: 14px/1em 'Segoe WP', 'Segoe UI', Tahoma, Arial, Sans-Serif;
 }

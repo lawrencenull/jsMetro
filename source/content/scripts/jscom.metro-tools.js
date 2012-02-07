@@ -18,14 +18,6 @@
 		var bodyElement = $('body');
 		var scope = this;
 		
-		/* Setup the settings & options */
-		var defaults = { timeout: 4000, cssClass: 'default' };
-        var settings = $.extend(
-            { }, 
-            defaults, 
-            options
-        );
-		
 		var notificationElement = bodyElement.find('#JSNotification');
 
 		if(notificationElement == undefined || notificationElement.length <= 0){
@@ -33,9 +25,9 @@
 			notificationElement = bodyElement.find('#JSNotification');
 			notificationElement.html('<p></p><div class="progress"><!--progress--></div>');
 		}		
-		
-		this.timeout = settings.timeout;
-		this.cssClass = settings.cssClass;
+
+		this.updateSettings(options);
+
 		this.target = notificationElement;
 		this.timer = null;
 		this.timestamp = 0;
@@ -50,9 +42,7 @@
 		});
 	};
 	
-	NotifyController.prototype.notify = function(message, options){
-		var timestamp = new Date();
-		
+	NotifyController.prototype.updateSettings = function(options){
 		/* Setup the settings & options */
 		var defaults = { timeout: 4000, cssClass: 'default' };
         var settings = $.extend(
@@ -63,6 +53,17 @@
 		
 		this.timeout = settings.timeout;
 		this.cssClass = settings.cssClass;
+	};
+	
+	NotifyController.prototype.notify = function(message, options){
+		if(this.timer != null){
+			clearTimeout(this.timer);
+			this.timer = null;
+		}
+		this.target.attr('class', '');
+		this.updateSettings(options);
+		
+		var timestamp = new Date();
 
 		this.target.find('p').html(
 			'<span class="datestamp">' + 
@@ -118,7 +119,7 @@
 			return;
 		}
 		
-		this.target.removeClass('active').removeClass(this.cssClass);
+		this.target.removeClass('active'); //.removeClass(this.cssClass);
 	};
 	
 	/* EVERY CONTROLLER */

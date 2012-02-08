@@ -1,4 +1,6 @@
 (function ($) {
+	"use strict";
+	
     $.notify = function (message, options) {
 		var bodyElement = $('body');
 		
@@ -20,7 +22,7 @@
 		
 		var notificationElement = bodyElement.find('#JSNotification');
 
-		if (notificationElement == undefined || notificationElement.length <= 0) {
+		if (notificationElement == null || notificationElement.length <= 0) {
 			bodyElement.append('<div id="JSNotification"></div>');
 			notificationElement = bodyElement.find('#JSNotification');
 			notificationElement.html('<p></p><div class="progress"><!--progress--></div>');
@@ -81,7 +83,7 @@
 				'</span><span class="message">' + 
 				message + 
 				'</span>'
-			)
+			);
 			this.timestamp = timestamp;
 			this.target.addClass('active').addClass(this.cssClass);
 			
@@ -137,7 +139,7 @@
 			
 			this.target.removeClass('active'); //.removeClass(this.cssClass);
 		}
-	}
+	};
 	
 	/* EVERY CONTROLLER */
 	$.fn.every = function(interval, pauseInterval, callback, id) {
@@ -167,35 +169,37 @@
 		this.timerId = null;
 	}
 
-	EveryController.prototype.init = function() {
-		this.reset();
-	}
+	EveryController.prototype = {
+		init: function() {
+			this.reset();
+		},
 
-	EveryController.prototype.reset = function() {
-		// Clear the timer
-		clearTimeout(this.timerId);
-		
-		var that = this;
-		
-		// Wait for a bit...
-		this.timerId = setTimeout(function() { that.timeOut(); }, this.interval);
-	}
+		reset: function() {
+			// Clear the timer
+			clearTimeout(this.timerId);
+			
+			var that = this;
+			
+			// Wait for a bit...
+			this.timerId = setTimeout(function() { that.timeOut(); }, this.interval);
+		},
 
-	EveryController.prototype.timeOut = function () {
-		// Reset the timer and perform the callback
-		clearTimeout(this.timerId);
-		if (this.callback) {
-			this.callback();
+		timeOut: function () {
+			// Reset the timer and perform the callback
+			clearTimeout(this.timerId);
+			if (this.callback) {
+				this.callback();
+			}
+
+			// Setup the delay (adjust for animation)
+			var that = this;
+			this.timerId = setTimeout(
+				function () { 
+					that.reset(); 
+				},
+				this.pauseInterval
+			);
 		}
-
-		// Setup the delay (adjust for animation)
-		var that = this;
-		this.timerId = setTimeout(
-			function () { 
-				that.reset(); 
-			},
-			this.pauseInterval
-		);
-	}
+	};
 
 })(jQuery);

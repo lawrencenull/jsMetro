@@ -80,6 +80,7 @@
 				<h1>jsMetro v<span id="MetroVersion">...</span> Demos</h1>
 				
 				<h2><a role="anchor" name="notify">Notifications</a></h2>
+				<p>The Notify API displays a notification akin to the Windows Phone 7 (WP7) notification bar (displayed after recieving a text message). It requires a direct call and makes use of an element automatically added to the DOM (<code>#JSNotification</code>).</p>
 				<ul class="examples">
 					<li>
 						<a id="TestNotify" href="#">Create a Notification</a>
@@ -114,7 +115,34 @@
 				<p>Coming soon.</p>
 				
 				<h2><a role="anchor" name="collapsible">Collapsible</a></h2>
-				<p>Coming soon.</p>
+				<p>Collapsible takes each element and looks for two things: a child configurable element that triggers the collapsing, and the element to collapse. As of now, the trigger element must be a direct child of the originating jQuery selector.</p>
+				<p><strong>HTML/CSS</strong> model.</p>
+<pre>&lt;ul class="examples"&gt;
+	&lt;li&gt;Basic alert sample.
+		&lt;div&gt;
+			&lt;a href="#"&gt;[+] View Source&lt;/a&gt;
+			&lt;pre class="collapsible"&gt;alert('hello, world');&lt;/pre&gt;
+		&lt;/div&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;</pre>
+
+				
+				<p><strong>jQuery/javascript code</strong> that activates the previous section.</p>
+<pre>$(document).ready(function() {
+	$('.examples>li>div').collapsible({
+		callback: function() {
+			var collapsible = $(this),
+				parent = collapsible.parents('.examples>li>div').find('>a');
+			
+			if (collapsible.hasClass('collapsed')) {
+				parent.html('[+] View Source');
+			}
+			else {
+				parent.html('[-] Hide Source');
+			}
+		}
+	});
+});</pre>
 				
 				<h2><a role="anchor" name="forms">Forms</a></h2>
 				<p>Coming soon.</p>

@@ -2,20 +2,22 @@
 body, html { margin: 0; padding: 0; }
 body { 
 	background: url('images/vertical_cloth.png') repeat; 
-	font: 0.85em/1.25em 'Helvetica LT Std', 'Segoe WP Semilight', 'Segoe UI'; 
+	font: 0.85em/1.25em 'Segoe UI', Arial, Tahoma, Sans-Serif; 
 }
 
 a { color: #007cca; text-decoration: none; }
 a[role="anchor"] { color: #000; }
 a:hover { color: #000; }
 
-h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+h1, h2, h3, h4, h5, h6 { font-weight: normal; margin: 40px 0px 0px; }
 h1 { font-size: 30px; }
 h2 { font-size: 24px; }
 h3 { font-size: 22px; }
 h4 { font-size: 20px; }
 h5 { font-size: 18px; }
 h6 { font-size: 16px; }
+
+pre, code { font: 8pt/1em Consolas, 'Courier New', Courier, Monospace; }
 
 #Page>header {
 	position: fixed;
@@ -81,6 +83,7 @@ h6 { font-size: 16px; }
 }
 #Page>article h1 { border-bottom: solid 1px #ccc; padding: 8px 0; margin: 20px 0; }
 #Page>article li { margin: 10px 0px; }
+#Page>article p { line-height: 1.5em; }
 
 #Page>footer { 
 	width: 960px; 
@@ -96,4 +99,5 @@ h6 { font-size: 16px; }
 #Page>article ul.examples li { margin: 25px 0px; }
 ul.examples li>div { font-size: 8pt; margin: 10px 0; }
 ul.examples li>div>a { background: #222e35; padding: 5px 10px; color: #fff; }
-ul.examples li>div pre { padding: 20px; margin: 0; background: #222e35; color: #fff; }
+
+pre { font-size: 8pt; padding: 20px; margin: 0; background: #222e35; color: #fff; }

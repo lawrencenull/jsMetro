@@ -1,155 +1,194 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.js"></script>
-		<!--<script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>-->
-		<script src="content/scripts/date-format.js"></script>
-		<script src="content/scripts/jscom.metro-tools.js"></script>
-		
-		<link href="content/css/base.css" rel="stylesheet" media="all" />
-		<link href="content/css/jscom.metro.css" rel="stylesheet" media="all" />
-		
-		<!--[if gte IE 9]>
-		  <style type="text/css">
-			.gradient {
-			   filter: none;
-			}
-		  </style>
-		<![endif]-->
-		
-		<style>		
-			.red { background: red !important; }
-		</style>
-		
-		<script>
-			$(document).ready(function(event){
-				$('.examples>li>div').collapsible({
-					callback: function() {
-						var collapsible = $(this),
-							parent = collapsible.parents('.examples>li>div').find('>a');
-						
-						if (collapsible.hasClass('collapsed')) {
-							parent.html('[+] View Source');
-						}
-						else {
-							parent.html('[-] Hide Source');
-						}
+    <head>
+        <title>jsMetro Demos</title>
+        <meta name="author" content="John Sedlak" />
+        <meta name="keywords" content="javascript,jquery,metro,wp7" />
+        <meta name="description" content="A set of samples that demonstrate Metro type functionality and elements on a website." />
+        
+        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.js"></script>
+        <!--<script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>-->
+        <script src="content/scripts/date-format.js"></script>
+        <script src="content/scripts/jscom.metro-tools.js"></script>
+        
+        <link href="content/css/base.css" rel="stylesheet" media="all" />
+        <link href="content/css/jscom.metro.css" rel="stylesheet" media="all" />
+        
+        <!--[if gte IE 9]>
+          <style type="text/css">
+            .gradient {
+               filter: none;
+            }
+          </style>
+        <![endif]-->
+        
+        <style>       
+			body, html { height: 200%; }
+            .red { background: red !important; }
+        </style>
+        
+        <script>
+            $(document).ready(function(event){
+                $('#Page>header ul a').click(function(event) {
+                    event.preventDefault();
+                    
+                    var that = $(this);
+                    var scrollDestination = $('a[name="' + that.attr('href').substr(1) + '"]');
+                    
+					if (history.pushState) {
+						window.history.pushState('', scrollDestination.html() + ' - jsMetro Demos', that.attr('href'))
 					}
-				});
-				
-				$('#MetroVersion').html($.js.version);
-				
-				$('#TestNotify').click(function(event){
-					event.preventDefault();
-					
-					$.js.notify('hello, world!');
-				});
-				
-				$('#TestNotifyTimeout').click(function(event){
-					event.preventDefault();
-					
-					$.js.notify(
-						'hello, world!',
-						{ timeout: 1000 }						
-					);
-				});
-				
-				$('#TestNotifyTimeoutColor').click(function(event){
-					event.preventDefault();
-					
-					$.js.notify(
-						'hello, world!',
-						{ timeout: 1000, cssClass: 'red' }						
-					);
-				});
-			});
-		</script>
-	</head>
-	
-	<body>
-		<div id="Page">
-			<header>
-				<ul>
-					<li><a href="#notify">Notify</a></li>
-					<li><a href="#dialog">Dialog</a></li>
-					<li><a href="#collapsible">Collapsible</a></li>
-					<li><a href="#forms">Forms</a></li>
-				</ul>
-			</header>
-			<article>
-				<h1>jsMetro v<span id="MetroVersion">...</span> Demos</h1>
-				
-				<h2><a role="anchor" name="notify">Notifications</a></h2>
-				<p>The Notify API displays a notification akin to the Windows Phone 7 (WP7) notification bar (displayed after recieving a text message). It requires a direct call and makes use of an element automatically added to the DOM (<code>#JSNotification</code>).</p>
-				<ul class="examples">
-					<li>
-						<a id="TestNotify" href="#">Create a Notification</a>
-						<div>
-							<a href="#">[+] View Source</a>
-							<div class="collapsible"><pre>$.js.notify('hello, world!');</pre></div>
-						</div>
-					</li>
-					<li>
-						<a id="TestNotifyTimeout" href="#">Create a 1 Second Notification</a>
-						<div>
-							<a href="#">[+] View Source</a>
-							<pre class="collapsible">$.js.notify(
-	'hello, world',
-	{ timeout: 1000 }						
+                    
+                    scrollDestination.scrollTo();
+                });
+                
+                $('.examples>li>div').collapsible({
+                    autoCollapse: false,
+                    hidden: function(parent, toggle) {
+                        toggle.html('[+] View Source');
+                    },
+                    visible: function(parent, toggle) { 
+                        toggle.html('[-] View Source');
+                    }
+                });
+                
+                $('#MetroVersion').html($.js.version);
+                
+                $.js.notify();
+                
+                $('#TestNotify').click(function(event){
+                    event.preventDefault();
+                    
+                    $.js.notify('hello, world!');
+                });
+                
+                $('#TestNotifyTimeout').click(function(event){
+                    event.preventDefault();
+                    
+                    $.js.notify(
+                        'hello, world!',
+                        { timeout: 1000 }                        
+                    );
+                });
+                
+                $('#TestNotifyTimeoutColor').click(function(event){
+                    event.preventDefault();
+                    
+                    $.js.notify(
+                        'hello, world!',
+                        { timeout: 1000, cssClass: 'red' }                        
+                    );
+                });
+            });
+        </script>
+    </head>
+    
+    <body>
+        <div id="Page">
+            <header>
+                <ul>
+                    <li><a href="#notify">Notify</a></li>
+                    <li><a href="#dialog">Dialog</a></li>
+                    <li><a href="#collapsible">Collapsible</a></li>
+                    <li><a href="#scrollto">ScrollTo</a></li>
+                    <li><a href="#forms">Forms</a></li>
+                </ul>
+            </header>
+            <article>
+                <h1>jsMetro v<span id="MetroVersion">...</span> Demos</h1>
+                
+                <h2><a role="anchor" name="notify">Notifications</a></h2>
+                <p>The Notify API displays a notification akin to the Windows Phone 7 (WP7) notification bar (displayed after recieving a text message). It requires a direct call and makes use of an element automatically added to the DOM (<code>#JSNotification</code>).</p>
+                <ul class="examples">
+                    <li>
+                        <span role="title">PreInitialization of the DOM</span>
+                        <p>To ensure that the CSS animation works correctly the first time you supply a notification, you can simply pass in zero arguments into the <code>$.js.notify</code> function. This will add the appropriate elements to the DOM, letting the browser apply the CSS.</p>
+                        <div>
+                            <a href="#">[+] View Source</a>
+                            <div class="collapsible"><pre>$.js.notify();</pre></div>
+                        </div>
+                    </li>
+                    <li>
+                        <a id="TestNotify" href="#">Create a Notification</a>
+                        <div>
+                            <a href="#">[+] View Source</a>
+                            <div class="collapsible"><pre>$.js.notify('hello, world!');</pre></div>
+                        </div>
+                    </li>
+                    <li>
+                        <a id="TestNotifyTimeout" href="#">Create a 1 Second Notification</a>
+                        <div>
+                            <a href="#">[+] View Source</a>
+                            <pre class="collapsible">$.js.notify(
+    'hello, world',
+    { timeout: 1000 }                        
 );</pre>
-						</div>
-					</li>
-					<li>
-						<a id="TestNotifyTimeoutColor" href="#">Create a 1 Second, Red Notification</a>
-						<div>
-							<a href="#">[+] View Source</a>
-							<pre class="collapsible">$.js.notify(
-	'hello, world',
-	{ timeout: 1000, cssClass: 'red' }						
+                        </div>
+                    </li>
+                    <li>
+                        <a id="TestNotifyTimeoutColor" href="#">Create a 1 Second, Red Notification</a>
+                        <div>
+                            <a href="#">[+] View Source</a>
+                            <pre class="collapsible">$.js.notify(
+    'hello, world',
+    { timeout: 1000, cssClass: 'red' }                        
 );</pre>
-						</div>
-					</li>
-				</ul>
-				
-				<h2><a role="anchor" name="dialog">Dialog</a></h2>
-				<p>Coming soon.</p>
-				
-				<h2><a role="anchor" name="collapsible">Collapsible</a></h2>
-				<p>Collapsible takes each element and looks for two things: a child configurable element that triggers the collapsing, and the element to collapse. As of now, the trigger element must be a direct child of the originating jQuery selector.</p>
-				<p><strong>HTML/CSS</strong> model.</p>
+                        </div>
+                    </li>
+                </ul>
+                
+                <h2><a role="anchor" name="dialog">Dialog</a></h2>
+                <p>Coming soon.</p>
+                
+                <h2><a role="anchor" name="collapsible">Collapsible</a></h2>
+                <p>Collapsible takes each element and looks for two things: a child configurable element that triggers the collapsing, and the element to collapse.</p>
+                <p><strong>HTML/CSS</strong> model.</p>
 <pre>&lt;ul class="examples"&gt;
-	&lt;li&gt;Basic alert sample.
-		&lt;div&gt;
-			&lt;a href="#"&gt;[+] View Source&lt;/a&gt;
-			&lt;pre class="collapsible"&gt;alert('hello, world');&lt;/pre&gt;
-		&lt;/div&gt;
-	&lt;/li&gt;
+    &lt;li&gt;Basic alert sample.
+        &lt;div&gt;
+            &lt;a href="#"&gt;[+] View Source&lt;/a&gt;
+            &lt;pre class="collapsible"&gt;alert('hello, world');&lt;/pre&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
 &lt;/ul&gt;</pre>
 
-				
-				<p><strong>jQuery/javascript code</strong> that activates the previous section.</p>
+                
+                <p><strong>jQuery/javascript code</strong> that activates the previous section.</p>
 <pre>$(document).ready(function() {
-	$('.examples>li>div').collapsible({
-		callback: function() {
-			var collapsible = $(this),
-				parent = collapsible.parents('.examples>li>div').find('>a');
-			
-			if (collapsible.hasClass('collapsed')) {
-				parent.html('[+] View Source');
-			}
-			else {
-				parent.html('[-] Hide Source');
-			}
-		}
-	});
+    $('.examples&gt;li&gt;div').collapsible({
+        autoCollapse: false,
+        hidden: function(parent, toggle) {
+            toggle.html('[+] View Source');
+        },
+        visible: function(parent, toggle) { 
+            toggle.html('[-] View Source');
+        }
+    });
 });</pre>
-				
-				<h2><a role="anchor" name="forms">Forms</a></h2>
-				<p>Coming soon.</p>
-			</article>
-			<footer>
-				<p>&copy;2012 <a href="http://johnsedlak.com">John Sedlak</a>.</p>
-			</footer>
-		</div>
-	</body>
+                
+                <h2><a role="anchor" name="scrollto">ScrollTo</a></h2>
+                <p>The ScrollTo function allows for easy smooth scrolling to an element. The following demonstrates how the top navigation works on this site. It simultaneously pushes a history state while initiating the smooth scroll.</p>
+<pre>$('#Page>header ul a').click(function(event) {
+    // Prevent the HashTag/Anchor from linking
+    event.preventDefault();
+    
+    var that = $(this);
+    var scrollDestination = $('a[name="' + that.attr('href').substr(1) + '"]');
+    
+    // Push the history state (allows the back button to work)
+    window.history.pushState('', scrollDestination.html() + ' - jsMetro Demos', that.attr('href'))
+    
+    // Scroll!
+    scrollDestination.scrollTo();
+});
+</pre>
+                
+                <h2><a role="anchor" name="forms">Forms</a></h2>
+                <p>Coming soon.</p>
+            </article>
+            <footer>
+                <p>&copy;2012 <a href="http://johnsedlak.com">John Sedlak</a>.</p>
+            </footer>
+        </div>
+    </body>
 </html>

@@ -2,30 +2,54 @@
 <html>
 	<head>
 		<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.js"></script>
-		<script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>
+		<!--<script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>-->
 		<script src="content/scripts/date-format.js"></script>
 		<script src="content/scripts/jscom.metro-tools.js"></script>
 		
+		<link href="content/css/base.css" rel="stylesheet" media="all" />
 		<link href="content/css/jscom.metro.css" rel="stylesheet" media="all" />
 		
-		<style>
-			body { font-family: 'Helvetica LT Std', 'Segoe WP Semilight', 'Segoe UI'; }
+		<!--[if gte IE 9]>
+		  <style type="text/css">
+			.gradient {
+			   filter: none;
+			}
+		  </style>
+		<![endif]-->
+		
+		<style>		
 			.red { background: red !important; }
 		</style>
 		
 		<script>
 			$(document).ready(function(event){
+				$('.examples>li>div').collapsible({
+					callback: function() {
+						var collapsible = $(this),
+							parent = collapsible.parents('.examples>li>div').find('>a');
+						
+						if (collapsible.hasClass('collapsed')) {
+							parent.html('[+] View Source');
+						}
+						else {
+							parent.html('[-] Hide Source');
+						}
+					}
+				});
+				
+				$('#MetroVersion').html($.js.version);
+				
 				$('#TestNotify').click(function(event){
 					event.preventDefault();
 					
-					$.notify('<a href="index.htm">hello, world!</a>');
+					$.js.notify('hello, world!');
 				});
 				
 				$('#TestNotifyTimeout').click(function(event){
 					event.preventDefault();
 					
-					$.notify(
-						'<a href="index.htm">hello, world!</a>',
+					$.js.notify(
+						'hello, world!',
 						{ timeout: 1000 }						
 					);
 				});
@@ -33,8 +57,8 @@
 				$('#TestNotifyTimeoutColor').click(function(event){
 					event.preventDefault();
 					
-					$.notify(
-						'<a href="index.htm">hello, world!</a>',
+					$.js.notify(
+						'hello, world!',
 						{ timeout: 1000, cssClass: 'red' }						
 					);
 				});
@@ -43,14 +67,61 @@
 	</head>
 	
 	<body>
-		
-		<h1>jsMetro Demos</h1>
-		
-		<h2>Notifications</h2>
-		<ul>
-			<li><a id="TestNotify" href="#">Create a Notification</a></li>
-			<li><a id="TestNotifyTimeout" href="#">Create a 1 Second Notification</a></li>
-			<li><a id="TestNotifyTimeoutColor" href="#">Create a 1 Second, Red Notification</a></li>
-		</ul>
+		<div id="Page">
+			<header>
+				<ul>
+					<li><a href="#notify">Notify</a></li>
+					<li><a href="#dialog">Dialog</a></li>
+					<li><a href="#collapsible">Collapsible</a></li>
+					<li><a href="#forms">Forms</a></li>
+				</ul>
+			</header>
+			<article>
+				<h1>jsMetro v<span id="MetroVersion">...</span> Demos</h1>
+				
+				<h2><a role="anchor" name="notify">Notifications</a></h2>
+				<ul class="examples">
+					<li>
+						<a id="TestNotify" href="#">Create a Notification</a>
+						<div>
+							<a href="#">[+] View Source</a>
+							<div class="collapsible"><pre>$.js.notify('hello, world!');</pre></div>
+						</div>
+					</li>
+					<li>
+						<a id="TestNotifyTimeout" href="#">Create a 1 Second Notification</a>
+						<div>
+							<a href="#">[+] View Source</a>
+							<pre class="collapsible">$.js.notify(
+	'hello, world',
+	{ timeout: 1000 }						
+);</pre>
+						</div>
+					</li>
+					<li>
+						<a id="TestNotifyTimeoutColor" href="#">Create a 1 Second, Red Notification</a>
+						<div>
+							<a href="#">[+] View Source</a>
+							<pre class="collapsible">$.js.notify(
+	'hello, world',
+	{ timeout: 1000, cssClass: 'red' }						
+);</pre>
+						</div>
+					</li>
+				</ul>
+				
+				<h2><a role="anchor" name="dialog">Dialog</a></h2>
+				<p>Coming soon.</p>
+				
+				<h2><a role="anchor" name="collapsible">Collapsible</a></h2>
+				<p>Coming soon.</p>
+				
+				<h2><a role="anchor" name="forms">Forms</a></h2>
+				<p>Coming soon.</p>
+			</article>
+			<footer>
+				<p>&copy;2012 <a href="http://johnsedlak.com">John Sedlak</a>.</p>
+			</footer>
+		</div>
 	</body>
 </html>

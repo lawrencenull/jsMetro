@@ -15,6 +15,7 @@
 	
 	-webkit-transition: top 0.25s ease-in-out;
 	-moz-transition: top 0.25s ease-in-out;
+	-o-transition: top 0.25s ease-in-out;
 	transition: top 0.25s ease-in-out;
 
 	font: 14px/1em 'Segoe WP', 'Segoe UI', Tahoma, Arial, Sans-Serif;
@@ -35,3 +36,13 @@
 }
 
 #JSNotification a { color: #fff; text-decoration: underline; }
+/*
+.collapsible { 
+	height: auto; 
+	
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+.collapsible.collapsed { height: 0px; overflow: hidden; }*/

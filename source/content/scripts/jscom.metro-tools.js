@@ -1,7 +1,52 @@
 (function ($) {
 	"use strict";
 	
-    $.notify = function (message, options) {
+	if(!$.js){
+		$.js = {
+			version: "1.0"
+		};
+	}
+	
+	$.fn.collapsible = function(options) {
+		/* Setup the settings & options */
+		var defaults = { 
+			collapsibleSelector: '.collapsible',
+			toggleSelector: 'a',
+			callback: null
+		};
+		
+		var settings = $.extend(
+			{ }, 
+			defaults, 
+			options
+		);
+		
+		this.find(settings.collapsibleSelector).addClass('collapsed').slideUp(0);
+		
+		return this.each(function() {
+			var that = $(this),
+				elements = that.find(settings.toggleSelector);
+				
+			elements.click(function(event) {
+				event.preventDefault();
+				
+				var collapsibles = $(this).parent().find(settings.collapsibleSelector);
+				
+				collapsibles
+					.toggleClass('collapsed')
+					.each(function() {
+						var collapsible = $(this);
+						
+						if(collapsible.hasClass('collapsed')) collapsible.slideUp(options.callback);
+						else collapsible.slideDown(options.callback);
+					});
+			});
+			
+		});
+	};
+	
+    $.js.notify = function (message, options) {
+		
 		var bodyElement = $('body');
 		
 		var controller = bodyElement.data('jscom.NotifyController');

@@ -1,3 +1,78 @@
+.button { 
+	display: inline-block;
+	cursor: pointer;
+	
+	border: 0;
+	
+	padding: 5px 15px;
+	margin: 5px;
+	
+	background: #00b4ff;
+	color: #fff;
+	
+	-webkit-transition: all 0.25s linear;
+	-moz-transition: 	all 0.25s ease-in-out;
+	-o-transition: 		all 0.25s ease-in-out;
+	transition: 		all 0.25s ease-in-out;
+}
+input.button { 
+	padding: 7px 15px 7px;
+	
+	/* IE <9 Hack */
+	//padding: 4px 15px 3px; 
+	
+	
+	vertical-align: top; 
+}
+
+@-moz-document url-prefix() {
+  input.button { padding: 7px 15px 5px; }
+}
+
+.button:hover { color: #fff; background: #4acaff; }
+
+.icon.button { 
+	padding-left: 30px;
+	padding-right: 7px;	
+	background-repeat: no-repeat; 
+	background-position: 6px center; 
+}
+.add.icon.button { background-image: url('images/icons/white/add.png'); }
+.back.icon.button { background-image: url('images/icons/white/back.png'); }
+.camera.icon.button { background-image: url('images/icons/white/camera.png'); }
+.cancel.icon.button { background-image: url('images/icons/white/cancel.png'); }
+.check.icon.button { background-image: url('images/icons/white/check.png'); }
+.delete.icon.button { background-image: url('images/icons/white/delete.png'); }
+.download.icon.button { background-image: url('images/icons/white/download.png'); }
+.edit.icon.button { background-image: url('images/icons/white/edit.png'); }
+.add-to-favs.icon.button { background-image: url('images/icons/white/favs.addto.png'); }
+.favs.icon.button { background-image: url('images/icons/white/favs.png'); }
+.ff.icon.button { background-image: url('images/icons/white/ff.png'); }
+.flag.icon.button { background-image: url('images/icons/white/flag.png'); }
+.folder.icon.button { background-image: url('images/icons/white/folder.png'); }
+.heart.icon.button { background-image: url('images/icons/white/heart.png'); }
+.info.icon.button { background-image: url('images/icons/white/i.png'); }
+.mail.icon.button { background-image: url('images/icons/white/mail.png'); }
+.minus.icon.button { background-image: url('images/icons/white/minus.png'); }
+.next.icon.button { background-image: url('images/icons/white/next.png'); }
+.previous.icon.button { background-image: url('images/icons/white/prev.png'); }
+.overflow.icon.button { background-image: url('images/icons/white/overflowdots.png'); }
+.parent.icon.button { background-image: url('images/icons/white/parent.png'); }
+.pause.icon.button { background-image: url('images/icons/white/pause.png'); }
+.phone.icon.button { background-image: url('images/icons/white/phone.png'); }
+.play.icon.button { background-image: url('images/icons/white/play.png'); }
+.question.icon.button { background-image: url('images/icons/white/questionmark.png'); }
+.refresh.icon.button { background-image: url('images/icons/white/refresh.png'); }
+.rew.icon.button { background-image: url('images/icons/white/rew.png'); }
+.save.icon.button { background-image: url('images/icons/white/save.png'); }
+.search.icon.button { background-image: url('images/icons/white/search.png'); }
+.settings.icon.button { background-image: url('images/icons/white/settings.png'); }
+.share.icon.button { background-image: url('images/icons/white/share.png'); }
+.upload.icon.button { background-image: url('images/icons/white/upload.png'); }
+.video.icon.button { background-image: url('images/icons/white/video.png'); }
+/* 
+ * JSNotification
+ */
 #JSNotification { 
 	z-index: 999;
 	
@@ -36,6 +111,7 @@
 }
 
 #JSNotification a { color: #fff; text-decoration: underline; }
+
 /*
 .collapsible { 
 	height: auto; 

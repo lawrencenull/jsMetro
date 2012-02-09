@@ -10,13 +10,19 @@ a { color: #007cca; text-decoration: none; }
 a[role="anchor"] { color: #000; }
 a:hover { color: #000; }
 
-h1, h2, h3, h4, h5, h6 { font-weight: normal; margin: 40px 0px 0px; }
+h1, h2, h3, h4, h5, h6 { 
+	font-family: 'Segoe WP Semilight', 'Segoe UI Light', 'Segoe UI', Arial, Tahoma, Sans-Serif; 
+	font-weight: normal; 
+	
+	margin: 40px 0px 0px;
+	padding: 0;	
+}
 h1 { font-size: 36px; color: #000; }
-h2 { font-size: 28px; color: #1d1d1d; }
-h3 { font-size: 24px; color: #2d2d2d; }
-h4 { font-size: 20px; color: #3d3d3d; }
-h5 { font-size: 18px; color: #4d4d4d; }
-h6 { font-size: 16px; color: #4d4d4d; }
+h2 { font-size: 30px; color: #1d1d1d; margin: 40px 0 0; }
+h3 { font-size: 24px; color: #2d2d2d; margin: 10px 0 0; }
+h4 { font-size: 18px; color: #3d3d3d; margin: 10px 0 0; }
+h5 { font-size: 16px; color: #4d4d4d; margin: 10px 0 0; }
+h6 { font-size: 14px; color: #4d4d4d; margin: 10px 0 0; }
 
 pre, code { font: 8pt/1em Consolas, 'Courier New', Courier, Monospace; }
 

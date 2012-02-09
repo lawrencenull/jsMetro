@@ -23,7 +23,7 @@
         <![endif]-->
         
         <style>       
-			body, html { height: 200%; }
+            body, html { height: 200%; }
             .red { background: red !important; }
         </style>
         
@@ -35,20 +35,31 @@
                     var that = $(this);
                     var scrollDestination = $('a[name="' + that.attr('href').substr(1) + '"]');
                     
-					if (history.pushState) {
-						window.history.pushState('', scrollDestination.html() + ' - jsMetro Demos', that.attr('href'))
-					}
+                    if (history.pushState) {
+                        window.history.pushState('', scrollDestination.html() + ' - jsMetro Demos', that.attr('href'))
+                    }
                     
                     scrollDestination.scrollTo();
                 });
                 
                 $('.examples>li>div').collapsible({
                     autoCollapse: false,
+                    time: 250,
                     hidden: function(parent, toggle) {
                         toggle.html('[+] View Source');
                     },
                     visible: function(parent, toggle) { 
-                        toggle.html('[-] View Source');
+                        toggle.html('[-] Hide Source');
+                    }
+                });
+                
+                $('.collapsible-demo').collapsible({
+                    toggleSelector: 'a.button',
+                    hidden: function(parent, toggle) {
+                        toggle.html('[+] View Demo');
+                    },
+                    visible: function(parent, toggle) { 
+                        toggle.html('[-] Hide Demo');
                     }
                 });
                 
@@ -142,29 +153,35 @@
                 
                 <h2><a role="anchor" name="collapsible">Collapsible</a></h2>
                 <p>Collapsible takes each element and looks for two things: a child configurable element that triggers the collapsing, and the element to collapse.</p>
-                <p><strong>HTML/CSS</strong> model.</p>
-<pre>&lt;ul class="examples"&gt;
-    &lt;li&gt;Basic alert sample.
-        &lt;div&gt;
-            &lt;a href="#"&gt;[+] View Source&lt;/a&gt;
-            &lt;pre class="collapsible"&gt;alert('hello, world');&lt;/pre&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;</pre>
-
                 
-                <p><strong>jQuery/javascript code</strong> that activates the previous section.</p>
-<pre>$(document).ready(function() {
-    $('.examples&gt;li&gt;div').collapsible({
-        autoCollapse: false,
-        hidden: function(parent, toggle) {
-            toggle.html('[+] View Source');
-        },
-        visible: function(parent, toggle) { 
-            toggle.html('[-] View Source');
-        }
-    });
+                <h3>Demo</h3>
+                
+                <div class="collapsible-demo">
+                    <p><a href="#" class="button">[+] View Demo</a></p>
+                    <pre class="collapsible">sample block
+                    </pre>
+                </div>
+                
+                <h4>HTML/CSS</h4>
+                <p>The basic HTML setup has a wrapper element that contains two child elements - the trigger and the collapsible element.</p>
+<pre>&lt;div class="collapsible-demo"&gt;
+    &lt;p&gt;&lt;a href="#" class="button"&gt;[+] Expand&lt;/a&gt;&lt;/p&gt;
+    &lt;pre class="collapsible"&gt;sample block
+    &lt;/pre&gt;
+&lt;/div&gt;</pre>
+
+                <h4>jQuery</h4>
+				<p>The collapsible function can take a few options. Demoed here are <code>toggleSelector</code>, <code>hidden</code>, and <code>visible</code>.</p>
+<pre>$('.collapsible-demo').collapsible({
+    toggleSelector: 'a.button',
+    hidden: function(parent, toggle) {
+        toggle.html('[+] View Demo');
+    },
+    visible: function(parent, toggle) { 
+        toggle.html('[-] Hide Demo');
+    }
 });</pre>
+                
                 
                 <h2><a role="anchor" name="scrollto">ScrollTo</a></h2>
                 <p>The ScrollTo function allows for easy smooth scrolling to an element. The following demonstrates how the top navigation works on this site. It simultaneously pushes a history state while initiating the smooth scroll.</p>

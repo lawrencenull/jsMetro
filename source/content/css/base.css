@@ -1,6 +1,7 @@
 * { outline: none; }
 body, html { margin: 0; padding: 0; }
 body { 
+	color: #4d4d4d;
 	background: url('images/vertical_cloth.png') repeat; 
 	font: 0.85em/1.25em 'Segoe UI', Arial, Tahoma, Sans-Serif; 
 }
@@ -10,12 +11,12 @@ a[role="anchor"] { color: #000; }
 a:hover { color: #000; }
 
 h1, h2, h3, h4, h5, h6 { font-weight: normal; margin: 40px 0px 0px; }
-h1 { font-size: 30px; }
-h2 { font-size: 24px; }
-h3 { font-size: 22px; }
-h4 { font-size: 20px; }
-h5 { font-size: 18px; }
-h6 { font-size: 16px; }
+h1 { font-size: 36px; color: #000; }
+h2 { font-size: 28px; color: #1d1d1d; }
+h3 { font-size: 24px; color: #2d2d2d; }
+h4 { font-size: 20px; color: #3d3d3d; }
+h5 { font-size: 18px; color: #4d4d4d; }
+h6 { font-size: 16px; color: #4d4d4d; }
 
 pre, code { font: 8pt/1em Consolas, 'Courier New', Courier, Monospace; }
 

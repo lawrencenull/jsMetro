@@ -128,6 +128,8 @@
 			toggleSelector: '>a',
 			hidden: null,
 			visible: null,
+			time: 500,
+			easing: 'linear',
 			autoCollapse: true,
 			parentSelector: this.selector
 		};
@@ -147,10 +149,10 @@
 				parent = collapsible.parents(settings.parentSelector);
 			
 			if (collapsible.hasClass('collapsed')) {
-				collapsible.slideUp(settings.hidden(parent, toggle));
+				collapsible.slideUp(settings.time, settings.easing, settings.hidden(parent, toggle));
 			}
 			else {
-				collapsible.slideDown(settings.visible(parent, toggle));
+				collapsible.slideDown(settings.time, settings.easing, settings.visible(parent, toggle));
 			}
 		};
 		

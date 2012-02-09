@@ -9,6 +9,8 @@ body {
 a { color: #007cca; text-decoration: none; }
 a[role="anchor"] { color: #000; }
 a:hover { color: #000; }
+a:target { font-weight: bold; }
+h2 a:target { font-family: 'Segoe WP', 'Segoe UI', Arial, Tahoma, Sans-Serif; }
 
 h1, h2, h3, h4, h5, h6 { 
 	font-family: 'Segoe WP Semilight', 'Segoe UI Light', 'Segoe UI', Arial, Tahoma, Sans-Serif; 
@@ -91,8 +93,6 @@ pre, code { font: 8pt/1em Consolas, 'Courier New', Courier, Monospace; }
 #Page>article h1 { border-bottom: solid 1px #ccc; padding: 8px 0; margin: 20px 0; }
 #Page>article li { margin: 10px 0px; }
 #Page>article p { line-height: 1.5em; }
-
-a:target { font-weight: bold; font-family: 'Segoe WP', 'Segoe UI', Arial, Tahoma, Sans-Serif; }
 
 #Page>footer { 
 	width: 960px; 

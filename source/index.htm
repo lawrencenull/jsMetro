@@ -29,18 +29,23 @@
         
         <script>
             $(document).ready(function(event){
-                $('#Page>header ul a').click(function(event) {
-                    event.preventDefault();
-                    
-                    var that = $(this);
-                    var scrollDestination = $('a[name="' + that.attr('href').substr(1) + '"]');
-                    
-                    if (history.pushState) {
-                        window.history.pushState('', scrollDestination.html() + ' - jsMetro Demos', that.attr('href'))
-                    }
-                    
-                    scrollDestination.scrollTo();
-                });
+				/* Pre/Initialization */
+				$.js.notify();
+                $('#MetroVersion').html($.js.version);
+				
+				/* Header Links */
+				$('#Page>header ul a').click(function(event) {
+					event.preventDefault();
+					
+					var that = $(this);
+					var scrollDestination = $('a[name="' + that.attr('href').substr(1) + '"]');
+					
+					if (window.history && window.history.pushState) {
+						window.history.pushState('', scrollDestination.html() + ' - jsMetro Demos', that.attr('href'))
+					}
+					
+					scrollDestination.scrollTo();
+				});
                 
                 $('.collapsible-wrapper').collapsible({
                     toggleSelector: 'a.toggle',
@@ -59,10 +64,7 @@
                         }
                     }
                 });
-                
-                $('#MetroVersion').html($.js.version);
-                
-                $.js.notify();
+               
                 
                 $('#TestNotify').click(function(event){
                     event.preventDefault();
@@ -201,20 +203,18 @@
                 
                 <h2><a role="anchor" name="scrollto">ScrollTo</a></h2>
                 <p>The ScrollTo function allows for easy smooth scrolling to an element. The following demonstrates how the top navigation works on this site. It simultaneously pushes a history state while initiating the smooth scroll.</p>
-<pre>$('#Page>header ul a').click(function(event) {
-    // Prevent the HashTag/Anchor from linking
-    event.preventDefault();
-    
-    var that = $(this);
-    var scrollDestination = $('a[name="' + that.attr('href').substr(1) + '"]');
-    
-    // Push the history state (allows the back button to work)
-    window.history.pushState('', scrollDestination.html() + ' - jsMetro Demos', that.attr('href'))
-    
-    // Scroll!
-    scrollDestination.scrollTo();
-});
-</pre>
+<pre>$('#Page&gt;header ul a').click(function(event) {
+	event.preventDefault();
+	
+	var that = $(this);
+	var scrollDestination = $('a[name="' + that.attr('href').substr(1) + '"]');
+	
+	if (window.history && window.history.pushState) {
+		window.history.pushState('', scrollDestination.html() + ' - jsMetro Demos', that.attr('href'))
+	}
+	
+	scrollDestination.scrollTo();
+});</pre>
                 
                 <h2><a role="anchor" name="forms">Forms</a></h2>
                 <p>As part of the jsMetro package, a few form styles have been included.</p>

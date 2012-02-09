@@ -42,24 +42,21 @@
                     scrollDestination.scrollTo();
                 });
                 
-                $('.examples>li>div').collapsible({
-                    autoCollapse: false,
-                    time: 250,
+                $('.collapsible-wrapper').collapsible({
+                    toggleSelector: 'a.toggle',
                     hidden: function(parent, toggle) {
-                        toggle.html('[+] View Source');
+                        if (toggle.data('hidden-text')) {
+                            toggle.html(toggle.data('hidden-text'));
+                        } else {
+                            toggle.html('[+] View Demo');
+                        }
                     },
                     visible: function(parent, toggle) { 
-                        toggle.html('[-] Hide Source');
-                    }
-                });
-                
-                $('.collapsible-demo').collapsible({
-                    toggleSelector: 'a.button',
-                    hidden: function(parent, toggle) {
-                        toggle.html('[+] View Demo');
-                    },
-                    visible: function(parent, toggle) { 
-                        toggle.html('[-] Hide Demo');
+                        if (toggle.data('visible-text')) {
+                            toggle.html(toggle.data('visible-text'));
+                        } else {
+                            toggle.html('[-] Hide Demo');
+                        }
                     }
                 });
                 
@@ -114,22 +111,22 @@
                     <li>
                         <span role="title">PreInitialization of the DOM</span>
                         <p>To ensure that the CSS animation works correctly the first time you supply a notification, you can simply pass in zero arguments into the <code>$.js.notify</code> function. This will add the appropriate elements to the DOM, letting the browser apply the CSS.</p>
-                        <div>
-                            <a href="#">[+] View Source</a>
+                        <div class="collapsible-wrapper">
+                            <a href="#" class="toggle" data-hidden-text="[+] View Source" data-visible-text="[-] Hide Source">[+] View Source</a>
                             <div class="collapsible"><pre>$.js.notify();</pre></div>
                         </div>
                     </li>
                     <li>
                         <a id="TestNotify" href="#">Create a Notification</a>
-                        <div>
-                            <a href="#">[+] View Source</a>
+                        <div class="collapsible-wrapper">
+                            <a href="#" class="toggle" data-hidden-text="[+] View Source" data-visible-text="[-] Hide Source">[+] View Source</a>
                             <div class="collapsible"><pre>$.js.notify('hello, world!');</pre></div>
                         </div>
                     </li>
                     <li>
                         <a id="TestNotifyTimeout" href="#">Create a 1 Second Notification</a>
-                        <div>
-                            <a href="#">[+] View Source</a>
+                        <div class="collapsible-wrapper">
+                            <a href="#" class="toggle" data-hidden-text="[+] View Source" data-visible-text="[-] Hide Source">[+] View Source</a>
                             <pre class="collapsible">$.js.notify(
     'hello, world',
     { timeout: 1000 }                        
@@ -138,8 +135,8 @@
                     </li>
                     <li>
                         <a id="TestNotifyTimeoutColor" href="#">Create a 1 Second, Red Notification</a>
-                        <div>
-                            <a href="#">[+] View Source</a>
+                        <div class="collapsible-wrapper">
+                            <a href="#" class="toggle" data-hidden-text="[+] View Source" data-visible-text="[-] Hide Source">[+] View Source</a>
                             <pre class="collapsible">$.js.notify(
     'hello, world',
     { timeout: 1000, cssClass: 'red' }                        
@@ -156,31 +153,40 @@
                 
                 <h3>Demo</h3>
                 
-                <div class="collapsible-demo">
-                    <p><a href="#" class="button">[+] View Demo</a></p>
+                <div class="collapsible-wrapper">
+                    <p><a href="#" class="toggle button">[+] View Demo</a></p>
                     <pre class="collapsible">sample block
                     </pre>
                 </div>
                 
                 <h4>HTML/CSS</h4>
                 <p>The basic HTML setup has a wrapper element that contains two child elements - the trigger and the collapsible element.</p>
-<pre>&lt;div class="collapsible-demo"&gt;
-    &lt;p&gt;&lt;a href="#" class="button"&gt;[+] Expand&lt;/a&gt;&lt;/p&gt;
+<pre>&lt;div class="collapsible-wrapper"&gt;
+    &lt;p&gt;&lt;a href="#" class="toggle button"&gt;[+] Expand&lt;/a&gt;&lt;/p&gt;
     &lt;pre class="collapsible"&gt;sample block
     &lt;/pre&gt;
 &lt;/div&gt;</pre>
 
                 <h4>jQuery</h4>
                 <p>The collapsible function can take a few options. Demoed here are <code>toggleSelector</code>, <code>hidden</code>, and <code>visible</code>.</p>
-<pre>$('.collapsible-demo').collapsible({
-    toggleSelector: 'a.button',
+<pre>$('.collapsible-wrapper').collapsible({
+    toggleSelector: 'a.toggle',
     hidden: function(parent, toggle) {
-        toggle.html('[+] View Demo');
+        if (toggle.data('hidden-text')) {
+            toggle.html(toggle.data('hidden-text'));
+        } else {
+            toggle.html('[+] View Demo');
+        }
     },
     visible: function(parent, toggle) { 
-        toggle.html('[-] Hide Demo');
+        if (toggle.data('visible-text')) {
+            toggle.html(toggle.data('visible-text'));
+        } else {
+            toggle.html('[-] Hide Demo');
+        }
     }
-});</pre>
+});
+</pre>
                 
                 
                 <h2><a role="anchor" name="scrollto">ScrollTo</a></h2>
@@ -206,48 +212,51 @@
                 <p>
                     <input type="button" class="button" value="input.button" />
                     <a class="button" href="#">a.button</a>
-					<a class="edit icon button" href="#">a.button.edit.icon</a>
+                    <a class="edit icon button" href="#">a.button.edit.icon</a>
                 </p>
 <pre>&lt;p&gt;
     &lt;input type="button" class="button" value="input.button" /&gt;
     &lt;a class="button" href="#"&gt;a.button&lt;/a&gt;
     &lt;a class="edit icon button" href="#"&gt;a.button.edit.icon&lt;/a&gt;
 &lt;/p&gt;</pre>
-				<p>
-					<a class="add icon button" href="#">add</a>
-					<a class="back icon button" href="#">back</a>
-					<a class="camera icon button" href="#">camera</a>
-					<a class="cancel icon button" href="#">cancel</a>
-					<a class="check icon button" href="#">check</a>
-					<a class="delete icon button" href="#">delete</a>
-					<a class="download icon button" href="#">download</a>
-					<a class="edit icon button" href="#">edit</a>
-					<a class="add-to-favs icon button" href="#">add-to-favs</a>
-					<a class="favs icon button" href="#">favs</a>
-					<a class="ff icon button" href="#">ff</a>
-					<a class="flag icon button" href="#">flag</a>
-					<a class="folder icon button" href="#">folder</a>
-					<a class="heart icon button" href="#">heart</a>
-					<a class="info icon button" href="#">info</a>
-					<a class="mail icon button" href="#">mail</a>
-					<a class="minus icon button" href="#">minus</a>
-					<a class="next icon button" href="#">next</a>
-					<a class="previous icon button" href="#">previous</a>
-					<a class="overflow icon button" href="#">overflow</a>
-					<a class="parent icon button" href="#">parent</a>
-					<a class="pause icon button" href="#">pause</a>
-					<a class="phone icon button" href="#">phone</a>
-					<a class="play icon button" href="#">play</a>
-					<a class="question icon button" href="#">question</a>
-					<a class="refresh icon button" href="#">refresh</a>
-					<a class="rew icon button" href="#">rew</a>
-					<a class="save icon button" href="#">save</a>
-					<a class="search icon button" href="#">search</a>
-					<a class="settings icon button" href="#">settings</a>
-					<a class="share icon button" href="#">share</a>
-					<a class="upload icon button" href="#">upload</a>
-					<a class="video icon button" href="#">video</a>
-				</p>
+                <div class="collapsible-wrapper">
+                    <p><a href="#" class="toggle button">[+] View Demo</a></p>
+                    <p class="collapsible">
+                        <a class="add icon button" href="#">add</a>
+                        <a class="back icon button" href="#">back</a>
+                        <a class="camera icon button" href="#">camera</a>
+                        <a class="cancel icon button" href="#">cancel</a>
+                        <a class="check icon button" href="#">check</a>
+                        <a class="delete icon button" href="#">delete</a>
+                        <a class="download icon button" href="#">download</a>
+                        <a class="edit icon button" href="#">edit</a>
+                        <a class="add-to-favs icon button" href="#">add-to-favs</a>
+                        <a class="favs icon button" href="#">favs</a>
+                        <a class="ff icon button" href="#">ff</a>
+                        <a class="flag icon button" href="#">flag</a>
+                        <a class="folder icon button" href="#">folder</a>
+                        <a class="heart icon button" href="#">heart</a>
+                        <a class="info icon button" href="#">info</a>
+                        <a class="mail icon button" href="#">mail</a>
+                        <a class="minus icon button" href="#">minus</a>
+                        <a class="next icon button" href="#">next</a>
+                        <a class="previous icon button" href="#">previous</a>
+                        <a class="overflow icon button" href="#">overflow</a>
+                        <a class="parent icon button" href="#">parent</a>
+                        <a class="pause icon button" href="#">pause</a>
+                        <a class="phone icon button" href="#">phone</a>
+                        <a class="play icon button" href="#">play</a>
+                        <a class="question icon button" href="#">question</a>
+                        <a class="refresh icon button" href="#">refresh</a>
+                        <a class="rew icon button" href="#">rew</a>
+                        <a class="save icon button" href="#">save</a>
+                        <a class="search icon button" href="#">search</a>
+                        <a class="settings icon button" href="#">settings</a>
+                        <a class="share icon button" href="#">share</a>
+                        <a class="upload icon button" href="#">upload</a>
+                        <a class="video icon button" href="#">video</a>
+                    </p>
+                </div>
             </article>
             <footer>
                 <p>&copy;2012 <a href="http://johnsedlak.com">John Sedlak</a>.</p>

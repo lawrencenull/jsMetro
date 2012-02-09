@@ -92,6 +92,8 @@ pre, code { font: 8pt/1em Consolas, 'Courier New', Courier, Monospace; }
 #Page>article li { margin: 10px 0px; }
 #Page>article p { line-height: 1.5em; }
 
+a:target { font-weight: bold; font-family: 'Segoe WP', 'Segoe UI', Arial, Tahoma, Sans-Serif; }
+
 #Page>footer { 
 	width: 960px; 
 	

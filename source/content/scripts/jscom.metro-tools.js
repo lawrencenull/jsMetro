@@ -128,7 +128,7 @@
 			toggleSelector: '>a',
 			hidden: null,
 			visible: null,
-			time: 500,
+			time: 250,
 			easing: 'linear',
 			autoCollapse: true,
 			parentSelector: this.selector

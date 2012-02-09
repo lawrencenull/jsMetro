@@ -150,9 +150,19 @@
                 
                 <h2><a role="anchor" name="collapsible">Collapsible</a></h2>
                 <p>Collapsible takes each element and looks for two things: a child configurable element that triggers the collapsing, and the element to collapse.</p>
+				
+				<h3>Options</h3>
+				<ul>
+					<li><code>collapsibleSelector</code> - The jQuery selector for choosing the element that collapses. (default: <code>.collapse</code>)</li>
+					<li><code>toggleSelector</code> - The jQuery selector for choosing the element that toggles the collapse. The selector works off the parent wrapper element. (default: <code>&gt;a</code>)</li>
+					<li><code>hidden</code> - Callback function for when a collapsible is hidden. <code>parent</code> is set to the parent wrapper element; <code>toggle</code> is the element that triggered the event.</li>
+					<li><code>visible(parent, toggle)</code> - Callback function for when a collapsible is made visible. <code>parent</code> is set to the parent wrapper element; <code>toggle</code> is the element that triggered the event.</li>
+					<li><code>time</code> - The time (in milliseconds) for the slide animation. (default: <code>250</code>)</li>
+					<li><code>easing</code> - Easing function used for jQuery animations. (default: <code>linear</code>)</li>
+					<li><code>autoCollapse</code> - Boolean that will automatically collapse (or not) all collapsibles. (default: <code>true</code>)</li>
+				</ul>
                 
                 <h3>Demo</h3>
-                
                 <div class="collapsible-wrapper">
                     <p><a href="#" class="toggle button">[+] View Demo</a></p>
                     <pre class="collapsible">sample block

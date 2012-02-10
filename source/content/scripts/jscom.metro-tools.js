@@ -3,7 +3,7 @@
 	
 	if(!$.js){
 		$.js = {
-			version: "1.2"
+			version: "1.2.1"
 		};
 	}
 	
@@ -44,6 +44,15 @@
 		this.panelElement = $('#JSDialog .dialog-panel');
 		this.buttonsElement = $('#JSDialog .dialog-buttons');
 		this.contentElement = $('#JSDialog .dialog-content');
+		
+		$('#JSDialog .dialog-buttons a').live(
+			'click',
+			function(event) {
+				event.preventDefault();
+				
+				that.dialogElement.removeClass('visible');
+			}
+		);
 	};
 	
 	DialogController.prototype = {

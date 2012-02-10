@@ -37,6 +37,7 @@ input.button {
 	background-repeat: no-repeat; 
 	background-position: 6px center; 
 }
+
 .add.icon.button { background-image: url('images/icons/white/add.png'); }
 .back.icon.button { background-image: url('images/icons/white/back.png'); }
 .camera.icon.button { background-image: url('images/icons/white/camera.png'); }
@@ -70,6 +71,7 @@ input.button {
 .share.icon.button { background-image: url('images/icons/white/share.png'); }
 .upload.icon.button { background-image: url('images/icons/white/upload.png'); }
 .video.icon.button { background-image: url('images/icons/white/video.png'); }
+
 /* 
  * JSNotification
  */

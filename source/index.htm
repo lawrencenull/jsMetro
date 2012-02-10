@@ -3,7 +3,7 @@
     <head>
         <title>jsMetro Demos</title>
         <meta name="author" content="John Sedlak" />
-        <meta name="keywords" content="javascript,jquery,metro,wp7" />
+        <meta name="keywords" content="javascript,jquery,metro,wp7" /> 
         <meta name="description" content="A set of samples that demonstrate Metro type functionality and elements on a website." />
         
         <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.js"></script>
@@ -36,9 +36,15 @@
 				
 				/* Header Links */
 				$('#Page>header ul a').click(function(event) {
+					var that = $(this);
+					
+					/* Linking to another page, or a hashtag? */
+					if (that.attr('href')[0] != '#') {
+						return;
+					}
+					
 					event.preventDefault();
 					
-					var that = $(this);
 					var scrollDestination = $('a[name="' + that.attr('href').substr(1) + '"]');
 					
 					if (window.history && window.history.pushState) {
@@ -116,6 +122,7 @@
                     <li><a href="#collapsible">Collapsible</a></li>
                     <li><a href="#scrollto">ScrollTo</a></li>
                     <li><a href="#forms">Forms</a></li>
+					<li><a href="mapper.htm">Mapper</a></li>
                 </ul>
             </header>
             <article>

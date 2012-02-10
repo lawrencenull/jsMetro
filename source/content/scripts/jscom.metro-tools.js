@@ -1,9 +1,12 @@
 (function ($) {
 	"use strict";
-	
+
 	if(!$.js){
 		$.js = {
-			version: "1.2.1"
+			version: '1.2.2',
+			author: 'John Sedlak (kriscsc@msn.com)',
+			authorWebsite: 'http://johnsedlak.com',
+			website: 'https://github.com/jsedlak/jsMetro'
 		};
 	}
 	

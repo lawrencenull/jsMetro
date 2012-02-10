@@ -1,4 +1,4 @@
-* { outline: none; }
+* { outline: none; line-height: normal !important; }
 body, html { margin: 0; padding: 0; }
 body { 
 	color: #4d4d4d;
@@ -14,7 +14,7 @@ h2 a:target { font-family: 'Segoe WP', 'Segoe UI', Arial, Tahoma, Sans-Serif; }
 
 h1, h2, h3, h4, h5, h6 { 
 	font-family: 'Segoe WP Semilight', 'Segoe UI Light', 'Segoe UI', Arial, Tahoma, Sans-Serif; 
-	font-weight: normal; 
+	font-weight: normal;
 	
 	margin: 40px 0px 0px;
 	padding: 0;	
@@ -39,7 +39,7 @@ pre, code { font: 8pt/1em Consolas, 'Courier New', Courier, Monospace; }
 	top: 0; left: 0;
 	
 	width: 100%;
-	height: 33px;
+	height: 39px;
 	
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
 	border-bottom: solid 1px rgba(0, 0, 0, 0.85);	
@@ -119,3 +119,7 @@ ul.examples li>div { font-size: 8pt; margin: 10px 0; }
 ul.examples li>div>a { background: #222e35; padding: 5px 10px; color: #fff; }
 
 pre { font-size: 8pt; padding: 20px; margin: 0; background: #222e35; color: #fff; }
+
+
+/* MAPPING EXAMPLE */
+.mapped-object { margin: 20px; padding: 20px; background: #efefef; }

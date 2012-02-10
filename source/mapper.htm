@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>jsMetro Demos</title>
+        <meta name="author" content="John Sedlak" />
+        <meta name="keywords" content="javascript,jquery,metro,wp7" />
+        <meta name="description" content="A set of samples that demonstrate Metro type functionality and elements on a website." />
+        
+        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.js"></script>
+        <!--<script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>-->
+        <script src="content/scripts/date-format.js"></script>
+        <script src="content/scripts/jscom.metro-tools.js"></script>
+        <script src="content/scripts/jscom.mapper.js"></script>
+        
+        <link href="content/css/base.css" rel="stylesheet" media="all" />
+        <link href="content/css/jscom.metro.css" rel="stylesheet" media="all" />
+        
+        <!--[if gte IE 9]>
+          <style type="text/css">
+            .gradient {
+               filter: none;
+            }
+          </style>
+        <![endif]-->
+        
+        <style>       
+            body, html { height: 200%; }
+            .red { background: red !important; }
+        </style>
+        
+        <script>
+            $(document).ready(function() {
+				/* Header Links */
+				$('#Page>header ul a').click(function(event) {
+					var that = $(this);
+					
+					/* Linking to another page, or a hashtag? */
+					if (that.attr('href').substr(0, 1) != '#') {
+						return;
+					}
+					
+					event.preventDefault();
+					
+					var scrollDestination = $('a[name="' + that.attr('href').substr(1) + '"]');
+					
+					if (window.history && window.history.pushState) {
+						window.history.pushState('', scrollDestination.html() + ' - jsMetro Demos', that.attr('href'))
+					}
+					
+					scrollDestination.scrollTo();
+				});
+				
+                $('#BasicMappingButton').click(function(event) {
+                    event.preventDefault();
+                    $.js.map(
+                        $('#Mapped'),
+                        { 
+                            meta: {
+                                title: 'Hello, World',
+                                subtitle: 'The world as I see it.'
+                            }
+                        }
+                    );
+                });
+				
+				$('#CloningButton').click(function(event) {
+					event.preventDefault();
+					
+					var clone = $.js.map(
+						$('#Mapped'),
+						{
+							meta: { 
+								title: 'Cloned World',
+								subtitle: 'World Created At: ' + (new Date()).format('MM/dd/yyyy HH:mm:ss')
+							}
+						},
+						{ 
+							clone: true 
+						}
+					);
+					
+					$('#CloneBucket').append(clone);
+				});
+            });
+        </script>
+    </head>
+    
+    <body>
+        <div id="Page">
+            <header>
+                <ul>
+                    <li><a href="#use">Use</a></li>
+                    <li><a href="#basicMapping">Basic Mapping</a></li>
+                    <li><a href="#cloning">Cloning</a></li>
+					<li><a href="index.htm">jsMetro</a></li>
+                </ul>
+            </header>
+            <article>
+                <h1>Mapping Demos</h1>
+                <p>The Mapping (<code>$.js.map</code>) subset of the jsMetro framework provides a function to help map javscript objects to HTML elements. The ultimate goal is to make transforming assets from a server into HTML a simpler and more automatic process. It is not meant to be a general purpose data-object mapping tool.</p>
+				<h2><a role="anchor" name="user">Use</a></h2>
+				<pre>$.js.map(element, data, options)</pre>
+				<ul>
+					<li><code>element</code> - A jQuery element that represents how the object will be structured in HTML.</li>
+					<li><code>data</code> - The data object containing the necessary data and relevant properties and structure.</li>
+					<li><code>options</code>
+						<ul>
+							<li><code>clone</code> - Set to <code>true</code> if you wish the returned object to be a clone of the supplied element. (Default: <code>false</code>)</li>
+						</ul>
+					</li>
+				</ul>
+				
+                <h2><a role="anchor" name="basicMapping">Basic Mapping</a></h2>
+                <p>The following example maps a JSON object to the following HTML element structures (DOMs/OMs).</p>
+                <p><a id="BasicMappingButton" class="button">Map Object</a></p>
+                <div id="Mapped" class="mapped-object">
+                    <section data-key="meta">
+                        <h3 data-key="title">Title</h3>
+                        <h4 data-key="subtitle">Subtitle</h4>
+                    </section>
+                </div>
+                <h3>HTML</h3>
+<pre>&lt;div id="Mapped" class="mapped-object"&gt;
+    &lt;section data-key="meta"&gt;
+        &lt;h3 data-key="title"&gt;Title&lt;/h3&gt;
+        &lt;h4 data-key="subtitle"&gt;Subtitle&lt;/h4&gt;
+    &lt;/section&gt;
+&lt;/div&gt;</pre>
+                <h3>jQuery/Javascript</h3>
+<pre>$('#BasicMappingButton').click(function(event) {
+	event.preventDefault();
+	
+	$.js.map(
+		$('#Mapped'),
+		{ 
+			meta: {
+				title: 'Hello, World',
+				subtitle: 'The world as I see it.'
+			}
+		}
+	);
+	
+});</pre>
+				<h2><a role="anchor" name="cloning">Cloning</a></h2>
+				<p>The mapper also has the builtin ability to build clones of HTML OMs and return the clones for use. This is particularly useful for adding elements to a page from an external source.</p>
+				<p><a id="CloningButton" href="#" class="button">Add a Clone</a></p>
+				<div id="CloneBucket"></div>
+				
+				<h3>HTML</h3>
+<pre>&lt;div id="Mapped" class="mapped-object"&gt;
+    &lt;section data-key="meta"&gt;
+        &lt;h3 data-key="title"&gt;Title&lt;/h3&gt;
+        &lt;h4 data-key="subtitle"&gt;Subtitle&lt;/h4&gt;
+    &lt;/section&gt;
+&lt;/div&gt;
+
+&lt;div id="CloneBucket"&gt;&lt;/div&gt;</pre>	
+				<h3>jQuery/Javascript</h3>
+				<p>Instead of just calling the function, we grab the returned value and append it to our bucket. Note the additional <code>options</code> parameter that specifies that cloning should be active. Otherwise we will be returned the original element and a DOM move will occur.</p>
+<pre>$('#CloningButton').click(function(event) {
+	event.preventDefault();
+	
+	var clone = $.js.map(
+		$('#Mapped'),
+		{
+			meta: { 
+				title: 'Cloned World',
+				subtitle: 'World Created At: ' + (new Date()).format('MM/dd/yyyy HH:mm:ss')
+			}
+		},
+		{ 
+			clone: true 
+		}
+	);
+	
+	$('#CloneBucket').append(clone);
+});</pre>
+            </article>
+            <footer>
+                <p>&copy;2012 <a href="http://johnsedlak.com">John Sedlak</a>.</p>
+            </footer>
+        </div>
+    </body>
+</html>

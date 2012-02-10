@@ -1,6 +1,7 @@
-.button { 
+.button {
 	display: inline-block;
 	cursor: pointer;
+	line-height:normal !important;
 	
 	border: 0;
 	
@@ -16,7 +17,7 @@
 	transition: 		all 0.25s ease-in-out;
 }
 input.button { 
-	padding: 10px 15px 10px;
+	padding: 10px 15px 9px;
 	
 	/* IE <9 Hack */
 	//padding: 7px 15px 6px; 
@@ -26,7 +27,7 @@ input.button {
 }
 
 @-moz-document url-prefix() {
-  input.button { padding: 10px 15px 8px; }
+  input.button { padding: 10px 15px 7px; }
 }
 
 .button:hover { color: #fff; background: #4acaff; }

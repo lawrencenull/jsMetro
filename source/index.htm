@@ -31,6 +31,7 @@
             $(document).ready(function(event){
 				/* Pre/Initialization */
 				$.js.notify();
+				$.js.dialog();
                 $('#MetroVersion').html($.js.version);
 				
 				/* Header Links */
@@ -89,6 +90,19 @@
                         { timeout: 1000, cssClass: 'red' }                        
                     );
                 });
+				
+				$('#BasicDialog').click(function(event) {
+					event.preventDefault();
+					
+					$.js.dialog(
+						'<p>Would you like to continue?</p>',
+						{
+							buttons: [ 'Cancel', 'Continue' ],
+							buttonClasses: [ 'previous icon button', 'next icon button' ],
+							callbacks: [ null, null ]
+						}
+					);
+				});
             });
         </script>
     </head>
@@ -149,6 +163,8 @@
                 
                 <h2><a role="anchor" name="dialog">Dialog</a></h2>
                 <p>Coming soon.</p>
+				<h3>Demos</h3>
+				<p><a href="#" id="BasicDialog">Basic Dialog</a></p>
                 
                 <h2><a role="anchor" name="collapsible">Collapsible</a></h2>
                 <p>Collapsible takes each element and looks for two things: a child configurable element that triggers the collapsing, and the element to collapse.</p>

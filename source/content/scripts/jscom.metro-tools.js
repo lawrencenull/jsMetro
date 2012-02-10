@@ -7,6 +7,76 @@
 		};
 	}
 	
+	/*
+	 * DIALOG
+	 * Author: John Sedlak
+	 * Created: 2012-02-10
+	 * Use: $.js.dialog(options)
+	 */
+	$.js.dialog = function(message, options) {
+		var bodyElement = $('body');
+		
+		var controller = bodyElement.data('jscom.DialogController');
+		if (controller == null) {
+			controller = new DialogController();
+			bodyElement.data('jscom.DialogController', controller);
+		}
+		
+		controller.init(options);
+		if (message != null && message.length > 0) {
+			controller.dialog(message);
+		}
+		
+		return controller;
+	};
+	
+	function DialogController(options) {
+		// Helper elements & variables
+		var bodyElement = $('body'),
+			that = this;
+		
+		var dialogElement = bodyElement.find('#JSDialog');
+		if (dialogElement == null  || dialogElement.length <= 0) {
+			bodyElement.append('<div id="JSDialog"><div class="dialog-panel"><div class="dialog-content"></div><div class="dialog-buttons"></div></div></div>');
+		}
+		
+		this.dialogElement = bodyElement.find('#JSDialog');
+		this.panelElement = $('#JSDialog .dialog-panel');
+		this.buttonsElement = $('#JSDialog .dialog-buttons');
+		this.contentElement = $('#JSDialog .dialog-content');
+	};
+	
+	DialogController.prototype = {
+		
+		init: function(options) {
+			/* Setup the settings & options */
+			var defaults = { 
+				buttons: [ 'No', 'Yes' ], 
+				buttonClasses: [ 'delete icon button', 'checkmark icon button' ],
+				callbacks: [ null, null ]
+			};
+			
+			var settings = $.extend(
+				{ }, 
+				defaults, 
+				options
+			);
+			
+			var html = '';
+			for (var i = 0; i < settings.buttons.length; i++) {
+				html += '<a href="#" class="' + settings.buttonClasses[i] + '">' + settings.buttons[i] + '</a>&nbsp;';
+			}
+			
+			this.buttonsElement.html(html);
+		},
+		
+		dialog: function(message) {
+			this.contentElement.html(message);
+			this.dialogElement.addClass('visible');
+		}
+		
+	};
+	
 	/* SCROLLTO
 	 * Author: John Sedlak
 	 * Created: 2012-02-08

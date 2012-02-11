@@ -5,38 +5,37 @@
 	
 	border: 0;
 	
-	padding: 8px 15px;
-	margin: 8px 5px 8px 0;
+	padding: 7px 15px;
+	margin: 0 5px 5px 0;
 	
 	background: #00b4ff;
 	color: #fff;
 	
-	-webkit-transition: all 0.25s linear;
-	-moz-transition: 	all 0.25s ease-in-out;
-	-o-transition: 		all 0.25s ease-in-out;
-	transition: 		all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out !important;
+	-moz-transition: 	all 0.25s ease-in-out !important;
+	-o-transition: 		all 0.25s ease-in-out !important;
+	transition: 		all 0.25s ease-in-out !important;
 }
 input.button { 
-	padding: 10px 15px 9px;
+	padding: 9px 15px 8px;
 	
-	/* IE <9 Hack */
-	//padding: 7px 15px 6px; 
-	
+	/* IE 8 Hack */
+	//padding: 9px 15px 8px; 
 	
 	vertical-align: top; 
 }
 
 @-moz-document url-prefix() {
-  input.button { padding: 10px 15px 7px; }
+  input.button { padding: 9px 15px 6px; }
 }
 
 .button:hover { color: #fff; background: #4acaff; }
 
 .icon.button { 
-	padding-left: 30px;
-	padding-right: 7px;	
+	padding-left: 35px;
+	padding-right: 12px;	
 	background-repeat: no-repeat; 
-	background-position: 6px center; 
+	background-position: 11px center; 
 }
 
 .add.icon.button { background-image: url('images/icons/white/add.png'); }

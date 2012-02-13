@@ -3,7 +3,7 @@
 
 	if(!$.js){
 		$.js = {
-			version: '1.2.2',
+			version: '1.2.3',
 			author: 'John Sedlak (kriscsc@msn.com)',
 			authorWebsite: 'http://johnsedlak.com',
 			website: 'https://github.com/jsedlak/jsMetro'
@@ -53,7 +53,7 @@
 			function(event) {
 				event.preventDefault();
 				
-				that.dialogElement.removeClass('visible');
+				that.buttonClicked($(this), event);
 			}
 		);
 	};
@@ -63,6 +63,7 @@
 		init: function(options) {
 			/* Setup the settings & options */
 			var defaults = { 
+				defaultClassString: 'button ',
 				buttons: [ 'No', 'Yes' ], 
 				buttonClasses: [ 'delete icon button', 'checkmark icon button' ],
 				callbacks: [ null, null ]
@@ -76,15 +77,36 @@
 			
 			var html = '';
 			for (var i = 0; i < settings.buttons.length; i++) {
-				html += '<a href="#" class="' + settings.buttonClasses[i] + '">' + settings.buttons[i] + '</a>&nbsp;';
+				html += '<a href="#" class="' + settings.defaultClassString + settings.buttonClasses[i] + '">' + settings.buttons[i] + '</a>&nbsp;';
 			}
 			
+			this.buttons = settings.buttons;
+			this.defaultClassString = settings.defaultClassString;
+			this.buttonClasses = settings.buttonClasses;
+			this.callbacks = settings.callbacks;
 			this.buttonsElement.html(html);
 		},
 		
 		dialog: function(message) {
 			this.contentElement.html(message);
 			this.dialogElement.addClass('visible');
+		},
+		
+		buttonClicked: function(button, event) {
+			this.dialogElement.removeClass('visible');
+			
+			for (var i = 0; i < this.buttons.length; i++) {
+				if (this.buttons[i] == button.html()) {
+					if (this.callbacks != null) {
+						var callback = this.callbacks[i];
+						if (callback != null) {
+							callback(this, button, event);
+						}
+					}
+					
+					break;
+				}
+			}
 		}
 		
 	};

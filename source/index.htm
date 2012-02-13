@@ -97,6 +97,14 @@
                     );
                 });
 				
+				var cancelCallback = function(controller, button, event) {
+					alert('Cancel was clicked!');
+				};
+
+				var continueCallback = function(c, b, e) {
+					alert('Continue was clicked!');
+				};
+
 				$('#BasicDialog').click(function(event) {
 					event.preventDefault();
 					
@@ -105,7 +113,7 @@
 						{
 							buttons: [ 'Cancel', 'Continue' ],
 							buttonClasses: [ 'previous icon button', 'next icon button' ],
-							callbacks: [ null, null ]
+							callbacks: [ cancelCallback, continueCallback ]
 						}
 					);
 				});
@@ -169,9 +177,35 @@
                 </ul>
                 
                 <h2><a role="anchor" name="dialog">Dialog</a></h2>
-                <p>Coming soon.</p>
+				
+				<h3>Signature</h3>
+				<pre>$.js.dialog(message, options)</pre>
+				
 				<h3>Demos</h3>
-				<p><a href="#" id="BasicDialog">Basic Dialog</a></p>
+				<p>To display a Dialog, just call <code>$.js.dialog</code> with a few settings. The DOM manipulation is taken care of by the plugin, so there is work to do outside of the Javascript call. <strong>Note</strong>: The order of all the options (<code>buttons</code>, <code>buttonClasses</code>, <code>callbacks</code>) matters - the function relies on these being in the same order.</p>
+				<p><a href="#" class="next icon button" id="BasicDialog">Basic Dialog</a></p>
+				
+				<h4>jQuery</h4>
+<pre>var cancelCallback = function(controller, button, event) {
+	alert('Cancel was clicked!');
+};
+
+var continueCallback = function(c, b, e) {
+	alert('Continue was clicked!');
+};
+
+$('#BasicDialog').click(function(event) {
+	event.preventDefault();
+	
+	$.js.dialog(
+		'&lt;p&gt;Would you like to continue?&lt;/p&gt;',
+		{
+			buttons: [ 'Cancel', 'Continue' ],
+			buttonClasses: [ 'previous icon', 'next icon' ],
+			callbacks: [ cancelCallback, continueCallback ]
+		}
+	);
+});</pre>
                 
                 <h2><a role="anchor" name="collapsible">Collapsible</a></h2>
                 <p>Collapsible takes each element and looks for two things: a child configurable element that triggers the collapsing, and the element to collapse.</p>

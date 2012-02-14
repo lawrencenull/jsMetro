@@ -1,3 +1,17 @@
+/* DEFAULT WP7 Swatches */
+/*
+	magenta ff0097
+	purple	a200ff
+	teal	00aba9
+	lime	8cbf26
+	brown	996600
+	pink	ff0097
+	orange	f09609
+	blue	1ba1e2
+	red		e51400
+	green	339933
+ */
+ 
 .button {
 	display: inline-block;
 	cursor: pointer;
@@ -5,10 +19,10 @@
 	
 	border: 0;
 	
-	padding: 7px 15px;
+	padding: 7px 15px 8px;
 	margin: 0 5px 5px 0;
 	
-	background: #00b4ff;
+	background-color: #1ba1e2;
 	color: #fff;
 	
 	-webkit-transition: all 0.25s ease-in-out !important;
@@ -16,8 +30,9 @@
 	-o-transition: 		all 0.25s ease-in-out !important;
 	transition: 		all 0.25s ease-in-out !important;
 }
+
 input.button { 
-	padding: 9px 15px 8px;
+	padding: 9px 15px 9px;
 	
 	/* IE 8 Hack */
 	//padding: 9px 15px 8px; 
@@ -29,8 +44,66 @@ input.button {
   input.button { padding: 9px 15px 6px; }
 }
 
-.button:hover { color: #fff; background: #4acaff; }
+.button:hover { 
+	color: #fff;  
+	background-color: #4cc3ff; 
+}
 
+.button:active { 
+	color: #fff; 
+	background-color: #1ba1e2; 
+}
+
+.button.disabled,
+.button[disabled="disabled"] { cursor: default; background-color: #2d2d2d !important; color: #ededed !important; }
+
+/* THEMING SUPPORT */
+	/* GREEN */
+	body.green .button { background-color: #339933; color: #fff; }
+	body.green .button:hover { color: #fff; background-color: #4ab64a; }
+	body.green .button:active { color: #fff; background-color: #339933; }
+	
+	/* RED */
+	body.red .button { background-color: #e51400; color: #fff; }
+	body.red .button:hover { color: #fff; background-color: #fe3623; }
+	body.red .button:active { color: #fff; background-color: #e51400; }
+	
+	/* ORANGE */
+	body.orange .button { background-color: #f09609; color: #fff; }
+	body.orange .button:hover { color: #fff; background-color: #ffaf32; }
+	body.orange .button:active { color: #fff; background-color: #f09609; }
+	
+	/* PINK */
+	body.pink .button { background-color: #ff0097; color: #fff; }
+	body.pink .button:hover { color: #fff; background-color: #ff65c0; }
+	body.pink .button:active { color: #fff; background-color: #ff0097; }
+	
+	/* BROWN */
+	body.brown .button { background-color: #996600; color: #fff; }
+	body.brown .button:hover { color: #fff; background-color: #bf8000; }
+	body.brown .button:active { color: #fff; background-color: #996600; }
+	
+	/* LIME */
+	body.lime .button { background-color: #8cbf26; color: #fff; }
+	body.lime .button:hover { color: #fff; background-color: #8cd200; }
+	body.lime .button:active { color: #fff; background-color: #8cbf26; }
+	
+	/* TEAL */
+	body.teal .button { background-color: #00aba9; color: #fff; }
+	body.teal .button:hover { color: #fff; background-color: #00d9d5; }
+	body.teal .button:active { color: #fff; background-color: #00aba9; }
+	
+	/* PURPLE */
+	body.purple .button { background-color: #a200ff; color: #fff; }
+	body.purple .button:hover { color: #fff; background-color: #be4cff; }
+	body.purple .button:active { color: #fff; background-color: #a200ff; }
+
+	/* MAGENTA */
+	body.magenta .button { background-color: #ff0097; color: #fff; }
+	body.magenta .button:hover { color: #fff; background-color: #ff4db6; }
+	body.magenta .button:active { color: #fff; background-color: #ff0097; }
+	
+/* ICON SUPPORT */
 .icon.button { 
 	padding-left: 35px;
 	padding-right: 12px;	
@@ -101,13 +174,15 @@ input.button {
 	left: 50%; top: -100%;
 	
 	background: #1d1d1d;
-	color: #fff !important;
+	color: #fff;
 	
 	-webkit-transition: top 1s ease-in-out;
 	-o-transition: top 1s ease-in-out;
 	-moz-transition: top 1s ease-in-out;
 	transition: top 1s ease-in-out;
 }
+
+body.light #JSDialog>.dialog-panel { background: #fff; color: inherit; }
 
 #JSDialog.visible>.dialog-panel {
 	top: 20%;
@@ -127,7 +202,7 @@ input.button {
 #JSNotification { 
 	z-index: 999;
 	
-	background: #00b4ff; 
+	background-color: #1ba1e2; 
 	color: #fff !important; 
 	
 	position: fixed;
@@ -146,6 +221,18 @@ input.button {
 
 	font: 14px/1em 'Segoe WP', 'Segoe UI', Tahoma, Arial, Sans-Serif;
 }
+
+/* THEMING */
+body.magenta #JSNotification { background-color: #ff0097; }
+body.purple #JSNotification { background-color: #a200ff; }
+body.teal #JSNotification { background-color: #00aba9; }
+body.lime #JSNotification { background-color: #8cbf26; }
+body.brown #JSNotification { background-color: #996600; }
+body.pink #JSNotification { background-color: #ff0097; }
+body.orange #JSNotification { background-color: #f09609; }
+body.blue #JSNotification { background-color: #1ba1e2; }
+body.red #JSNotification { background-color: #e51400; }
+body.green #JSNotification { background-color: #339933; }
 
 #JSNotification.active { top: 0px; }
 

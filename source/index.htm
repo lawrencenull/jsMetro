@@ -24,7 +24,7 @@
         
         <style>       
             body, html { height: 200%; }
-            .red { background: red !important; }
+            #JSNotification.red { background: red !important; }
         </style>
         
         <script>
@@ -117,11 +117,28 @@
 						}
 					);
 				});
+				
+				$('#ThemeButtons>a').click(function(event) {
+					event.preventDefault();
+					
+					var themes = ['magenta', 'purple', 'teal', 'lime', 'brown', 'pink', 'orange', 'blue', 'red', 'green'],
+						theme = '',
+						bodyElement = $('body');
+						
+					for (var i = 0; i < themes.length; i++) {
+						theme = themes[i];
+						if (bodyElement.hasClass(theme)) {
+							bodyElement.removeClass(theme);
+						}
+					}
+					
+					bodyElement.addClass($(this).data('theme'));
+				});
             });
         </script>
     </head>
     
-    <body>
+    <body class="light">
         <div id="Page">
             <header>
                 <ul>
@@ -130,6 +147,7 @@
                     <li><a href="#collapsible">Collapsible</a></li>
                     <li><a href="#scrollto">ScrollTo</a></li>
                     <li><a href="#forms">Forms</a></li>
+					<li><a href="#themes">Theming</a></li>
 					<li><a href="mapper.htm">Mapper</a></li>
                 </ul>
             </header>
@@ -280,6 +298,9 @@ $('#BasicDialog').click(function(event) {
                     <input type="button" class="button" value="input.button" />
                     <a class="button" href="#">a.button</a>
                     <a class="edit icon button" href="#">a.button.edit.icon</a>
+					<a class="edit icon button disabled" href="#">a.button.edit.icon.disabled</a>
+					<a class="button" href="#" disabled="disabled">a[disabled="disabled"]</a>
+					<input class="button" type="button" disabled="disabled" value="input[disabled='disabled']" />
                 </p>
 <pre>&lt;p&gt;
     &lt;input type="button" class="button" value="input.button" /&gt;
@@ -323,6 +344,26 @@ $('#BasicDialog').click(function(event) {
                         <a class="upload icon button" href="#">upload</a>
                         <a class="video icon button" href="#">video</a>
                     </p>
+					
+					<h2><a role="anchor" name="themes">Theming</a></h2>
+					<p>The stylesheets that give jsMetro its style include support for the built-in style swatches for Windows Phone 7. You can switch the theme of this page by using the buttons below. Give it a try!</p>
+					<p id="ThemeButtons">
+						<a href="#" class="button" data-theme="blue">Default (Blue) Theme</a>
+						<a href="#" class="button" data-theme="magenta">Magenta Theme</a>
+						<a href="#" class="button" data-theme="purple">Purple Theme</a>
+						<a href="#" class="button" data-theme="teal">Teal Theme</a>
+						<a href="#" class="button" data-theme="lime">Lime Theme</a>
+						<a href="#" class="button" data-theme="brown">Brown Theme</a>
+						
+						<a href="#" class="button" data-theme="pink">Pink Theme</a>
+						<a href="#" class="button" data-theme="orange">Orange Theme</a>
+						<a href="#" class="button" data-theme="red">Red Theme</a>
+						<a href="#" class="button" data-theme="green">Green Theme</a>
+					</p>
+					
+					<h3>How To</h3>
+					<p>To change a theme, simply add the theme name (in lowercase) to the body element!</p>
+					<pre>&lt;body class="pink"&gt;</pre>
                 </div>
             </article>
             <footer>

@@ -3,12 +3,36 @@
 
 	if(!$.js){
 		$.js = {
-			version: '1.2.3',
+			version: '1.2.4',
 			author: 'John Sedlak (kriscsc@msn.com)',
 			authorWebsite: 'http://johnsedlak.com',
 			website: 'https://github.com/jsedlak/jsMetro'
 		};
 	}
+	
+	$.js.themes = ['magenta', 'purple', 'teal', 'lime', 'brown', 'pink', 'orange', 'blue', 'red', 'green'];
+	
+	/*
+	 * THEME
+	 * Author: John Sedlak
+	 * Created: 2012-02-10
+	 * Use: $.js.theme(themeName)
+	 */
+	$.js.theme = function(themeName) {
+		var theme = '',
+			bodyElement = $('body');
+		
+		for(var i = 0; i < $.js.themes.length; i++) {
+			theme = $.js.themes[i];
+			
+			if (bodyElement.hasClass(theme)) {
+				bodyElement.removeClass(theme);
+			}
+		}
+		
+		bodyElement.addClass(themeName);
+	};
+	
 	
 	/*
 	 * DIALOG

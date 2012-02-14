@@ -121,18 +121,7 @@
 				$('#ThemeButtons>a').click(function(event) {
 					event.preventDefault();
 					
-					var themes = ['magenta', 'purple', 'teal', 'lime', 'brown', 'pink', 'orange', 'blue', 'red', 'green'],
-						theme = '',
-						bodyElement = $('body');
-						
-					for (var i = 0; i < themes.length; i++) {
-						theme = themes[i];
-						if (bodyElement.hasClass(theme)) {
-							bodyElement.removeClass(theme);
-						}
-					}
-					
-					bodyElement.addClass($(this).data('theme'));
+					$.js.theme($(this).data('theme'));
 				});
             });
         </script>
@@ -362,8 +351,11 @@ $('#BasicDialog').click(function(event) {
 					</p>
 					
 					<h3>How To</h3>
-					<p>To change a theme, simply add the theme name (in lowercase) to the body element!</p>
+					<p>To set the theme, simply add the theme name (in lowercase) to the body element!</p>
 					<pre>&lt;body class="pink"&gt;</pre>
+					
+					<p>To change the theme easily, use the <code>theme</code> function of the framework.</p>
+					<pre>$.js.theme('pink');</pre>
                 </div>
             </article>
             <footer>

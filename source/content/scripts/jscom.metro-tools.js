@@ -91,7 +91,7 @@
 			var defaults = { 
 				defaultClassString: 'button ',
 				buttons: [ 'No', 'Yes' ], 
-				buttonClasses: [ 'delete icon button', 'checkmark icon button' ],
+				buttonClasses: [ '', '' ],
 				callbacks: [ null, null ]
 			};
 			

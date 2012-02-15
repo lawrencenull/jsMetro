@@ -134,12 +134,28 @@ input.text-box {
     padding: 5px;
 }
 
-.error {
+.error-message {
     background: #ffeeee;
     border: solid 1px #f00;
     
     padding: 20px;
     margin: 10px 0px;
+}
+
+.success-message {
+	background: #eeffee;
+	border: solid 1px #0f0;
+					
+	padding: 20px;
+	margin: 10px 0px;
+}
+
+.warning-message {
+	background: #ffffee;
+	border: solid 1px #ff0;
+	
+	padding: 20px;
+	margin: 10px 0px;
 }
 
 .button {

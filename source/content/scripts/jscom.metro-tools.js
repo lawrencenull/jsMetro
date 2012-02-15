@@ -8,6 +8,8 @@
 			authorWebsite: 'http://johnsedlak.com',
 			website: 'https://github.com/jsedlak/jsMetro'
 		};
+	} else {
+		$.js.version = '1.2.4';
 	}
 	
 	$.js.themes = ['magenta', 'purple', 'teal', 'lime', 'brown', 'pink', 'orange', 'blue', 'red', 'green'];

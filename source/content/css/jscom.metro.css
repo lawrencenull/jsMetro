@@ -23,7 +23,8 @@
 	margin: 0 5px 5px 0;
 	
 	background-color: #1ba1e2;
-	color: #fff;
+	color: #fff !important;
+	text-decoration: none !important;
 	
 	-webkit-transition: all 0.25s ease-in-out !important;
 	-moz-transition: 	all 0.25s ease-in-out !important;

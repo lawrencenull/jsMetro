@@ -11,7 +11,137 @@
 	red		e51400
 	green	339933
  */
- 
+
+/* 
+ * JSDialog
+ */
+#JSDialog { 
+	position: fixed;
+	left: 0px; top: -100%;
+	width: 100%; height: 100%;
+	
+	background: #2d2d2d;
+	background: rgba(0, 0, 0, 0);
+	
+	-webkit-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+
+#JSDialog.visible { top: 0%; background: rgba(0, 0, 0, 0.75); }
+
+#JSDialog>.dialog-panel {
+	width: 500px; height: auto;
+	
+	margin: 0 0 0 -250px;
+	padding: 20px;
+	
+	position: absolute;
+	left: 50%; top: -100%;
+	
+	background: #1d1d1d;
+	color: #fff;
+	
+	-webkit-transition: top 1s ease-in-out;
+	-o-transition: top 1s ease-in-out;
+	-moz-transition: top 1s ease-in-out;
+	transition: top 1s ease-in-out;
+}
+
+body.light #JSDialog>.dialog-panel { background: #fff; color: inherit; }
+
+#JSDialog.visible>.dialog-panel {
+	top: 20%;
+}
+
+#JSDialog>.dialog-panel>.dialog-content {
+	text-align: justify;
+}
+
+#JSDialog>.dialog-panel>.dialog-buttons {
+	text-align: right;
+}
+
+/* 
+ * JSNotification
+ */
+#JSNotification { 
+	z-index: 999;
+	
+	background-color: #1ba1e2; 
+	color: #fff !important; 
+	
+	position: fixed;
+	left: 0; top: -40px; 
+	
+	padding: 0;
+	margin: 0;
+	
+	width: 100%; 
+	height: 40px; 
+	
+	-webkit-transition: top 0.25s ease-in-out;
+	-moz-transition: top 0.25s ease-in-out;
+	-o-transition: top 0.25s ease-in-out;
+	transition: top 0.25s ease-in-out;
+
+	font: 14px/1em 'Segoe WP', 'Segoe UI', Tahoma, Arial, Sans-Serif;
+}
+
+/* THEMING */
+body.magenta #JSNotification { background-color: #ff0097; }
+body.purple #JSNotification { background-color: #a200ff; }
+body.teal #JSNotification { background-color: #00aba9; }
+body.lime #JSNotification { background-color: #8cbf26; }
+body.brown #JSNotification { background-color: #996600; }
+body.pink #JSNotification { background-color: #ff0097; }
+body.orange #JSNotification { background-color: #f09609; }
+body.blue #JSNotification { background-color: #1ba1e2; }
+body.red #JSNotification { background-color: #e51400; }
+body.green #JSNotification { background-color: #339933; }
+
+#JSNotification.active { top: 0px; }
+
+#JSNotification p { position: absolute; left: 50px; top: 10px; padding: 0; margin: 0; }
+#JSNotification .datestamp { margin: 0px 10px 0 0; padding: 0;  }
+#JSNotification .message { margin: 0px 0 0 0; padding: 0; }
+
+#JSNotification .progress { 
+	background: black;
+	height: 2px; width: 100%; 
+	
+	position: absolute; 
+	bottom: 0px; left: 0px; 
+}
+
+#JSNotification a { color: #fff; text-decoration: underline; }
+
+/*
+.collapsible { 
+	height: auto; 
+	
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+.collapsible.collapsed { height: 0px; overflow: hidden; }*/
+
+
+/* FORM ELEMENTS */
+input.text-box {
+    padding: 5px;
+}
+
+.error {
+    background: #ffeeee;
+    border: solid 1px #f00;
+    
+    padding: 20px;
+    margin: 10px 0px;
+}
+
 .button {
 	display: inline-block;
 	cursor: pointer;
@@ -24,6 +154,7 @@
 	
 	background-color: #1ba1e2;
 	color: #fff !important;
+	
 	text-decoration: none !important;
 	
 	-webkit-transition: all 0.25s ease-in-out !important;
@@ -145,119 +276,3 @@ input.button {
 .share.icon.button { background-image: url('images/icons/white/share.png'); }
 .upload.icon.button { background-image: url('images/icons/white/upload.png'); }
 .video.icon.button { background-image: url('images/icons/white/video.png'); }
-
-/* 
- * JSDialog
- */
-#JSDialog { 
-	position: fixed;
-	left: 0px; top: -100%;
-	width: 100%; height: 100%;
-	
-	background: #2d2d2d;
-	background: rgba(0, 0, 0, 0);
-	
-	-webkit-transition: all 0.1s ease-in-out;
-	-o-transition: all 0.1s ease-in-out;
-	-moz-transition: all 0.1s ease-in-out;
-	transition: all 0.1s ease-in-out;
-}
-
-#JSDialog.visible { top: 0%; background: rgba(0, 0, 0, 0.75); }
-
-#JSDialog>.dialog-panel {
-	width: 500px; height: auto;
-	
-	margin: 0 0 0 -250px;
-	padding: 20px;
-	
-	position: absolute;
-	left: 50%; top: -100%;
-	
-	background: #1d1d1d;
-	color: #fff;
-	
-	-webkit-transition: top 1s ease-in-out;
-	-o-transition: top 1s ease-in-out;
-	-moz-transition: top 1s ease-in-out;
-	transition: top 1s ease-in-out;
-}
-
-body.light #JSDialog>.dialog-panel { background: #fff; color: inherit; }
-
-#JSDialog.visible>.dialog-panel {
-	top: 20%;
-}
-
-#JSDialog>.dialog-panel>.dialog-content {
-	text-align: justify;
-}
-
-#JSDialog>.dialog-panel>.dialog-buttons {
-	text-align: right;
-}
-
-/* 
- * JSNotification
- */
-#JSNotification { 
-	z-index: 999;
-	
-	background-color: #1ba1e2; 
-	color: #fff !important; 
-	
-	position: fixed;
-	left: 0; top: -40px; 
-	
-	padding: 0;
-	margin: 0;
-	
-	width: 100%; 
-	height: 40px; 
-	
-	-webkit-transition: top 0.25s ease-in-out;
-	-moz-transition: top 0.25s ease-in-out;
-	-o-transition: top 0.25s ease-in-out;
-	transition: top 0.25s ease-in-out;
-
-	font: 14px/1em 'Segoe WP', 'Segoe UI', Tahoma, Arial, Sans-Serif;
-}
-
-/* THEMING */
-body.magenta #JSNotification { background-color: #ff0097; }
-body.purple #JSNotification { background-color: #a200ff; }
-body.teal #JSNotification { background-color: #00aba9; }
-body.lime #JSNotification { background-color: #8cbf26; }
-body.brown #JSNotification { background-color: #996600; }
-body.pink #JSNotification { background-color: #ff0097; }
-body.orange #JSNotification { background-color: #f09609; }
-body.blue #JSNotification { background-color: #1ba1e2; }
-body.red #JSNotification { background-color: #e51400; }
-body.green #JSNotification { background-color: #339933; }
-
-#JSNotification.active { top: 0px; }
-
-#JSNotification p { position: absolute; left: 50px; top: 10px; padding: 0; margin: 0; }
-#JSNotification .datestamp { margin: 0px 10px 0 0; padding: 0;  }
-#JSNotification .message { margin: 0px 0 0 0; padding: 0; }
-
-#JSNotification .progress { 
-	background: black;
-	height: 2px; width: 100%; 
-	
-	position: absolute; 
-	bottom: 0px; left: 0px; 
-}
-
-#JSNotification a { color: #fff; text-decoration: underline; }
-
-/*
-.collapsible { 
-	height: auto; 
-	
-	-webkit-transition: all 0.25s ease-in-out;
-	-moz-transition: all 0.25s ease-in-out;
-	-o-transition: all 0.25s ease-in-out;
-	transition: all 0.25s ease-in-out;
-}
-.collapsible.collapsed { height: 0px; overflow: hidden; }*/

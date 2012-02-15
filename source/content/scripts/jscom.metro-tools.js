@@ -279,10 +279,26 @@
 				parent = collapsible.parents(settings.parentSelector);
 			
 			if (collapsible.hasClass('collapsed')) {
-				collapsible.slideUp(settings.time, settings.easing, settings.hidden(parent, toggle));
+				collapsible.slideUp(
+					settings.time, 
+					settings.easing, 
+					function() { 
+						if (settings.hidden) { 
+							settings.hidden(parent, toggle);
+						} 
+					}
+				);
 			}
 			else {
-				collapsible.slideDown(settings.time, settings.easing, settings.visible(parent, toggle));
+				collapsible.slideDown(
+					settings.time, 
+					settings.easing, 
+					function() {
+						if (settings.visible) {
+							settings.visible(parent, toggle);
+						}
+					}
+				);
 			}
 		};
 		

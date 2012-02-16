@@ -22,17 +22,20 @@
 	 */
 	$.js.theme = function(themeName) {
 		var theme = '',
-			bodyElement = $('body');
+			bodyElement = $('body'),
+			htmlElement = $('html');
 		
 		for(var i = 0; i < $.js.themes.length; i++) {
 			theme = $.js.themes[i];
 			
 			if (bodyElement.hasClass(theme)) {
 				bodyElement.removeClass(theme);
+				htmlElement.removeClass(theme);
 			}
 		}
 		
 		bodyElement.addClass(themeName);
+		htmlElement.addClass(themeName);
 	};
 	
 	

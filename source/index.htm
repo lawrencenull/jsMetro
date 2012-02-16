@@ -282,6 +282,24 @@ $('#BasicDialog').click(function(event) {
                 
                 <h2><a role="anchor" name="forms">Forms</a></h2>
                 <p>As part of the jsMetro package, a few form styles have been included.</p>
+				
+				<h3>Form Elements</h3>
+				
+				<p><input type="text" value="input[type=text]" /></p>
+				<p><input type="password" value="input[type=password]" /></p>
+				<p><textarea rows="4" cols="75">textarea</textarea></p>
+				<p>
+					<select>
+						<option>option 1</option>
+						<option>option 2</option>
+						<option>option 3</option>
+					</select>
+				</p>
+				<p><input type="checkbox" name="checkbox1" /><label for="checkbox1">label for checkbox1</label></p>
+				
+				<p><input type="radio" name="radio1" /> Radio 1</p>
+				<p><input type="radio" name="radio1" /> Radio 2</p>
+				
 				<h3>Message Sections</h3>
 				<p>Message sections are a great way to tell a user about both problems (errors & warnings) as well as successful completions. The jsMetro CSS includes a few styles to help this.</p>
 				
@@ -386,6 +404,65 @@ $('#BasicDialog').click(function(event) {
 					
 					<p>To change the theme easily, use the <code>theme</code> function of the framework.</p>
 					<pre>$.js.theme('pink');</pre>
+					
+					<h3>Scroll Bar Theming</h3>
+					<p>Scroll bar theming is currently only available for WebKit browsers. If you have WebKit, the scroll bars should be themed according to the current WP7 swatch.</p>
+					
+<pre class="prettyprint" style="width: 250px; height: 250px; overflow: auto;">
+$('.collapsible-wrapper').collapsible({
+    toggleSelector: 'a.toggle',
+    hidden: function(parent, toggle) {
+        if (toggle.data('hidden-text')) {
+            toggle.html(toggle.data('hidden-text'));
+        } else {
+            toggle.html('[+] View Demo');
+        }
+    },
+    visible: function(parent, toggle) { 
+        if (toggle.data('visible-text')) {
+            toggle.html(toggle.data('visible-text'));
+        } else {
+            toggle.html('[-] Hide Demo');
+        }
+    }
+});
+
+$('.collapsible-wrapper').collapsible({
+    toggleSelector: 'a.toggle',
+    hidden: function(parent, toggle) {
+        if (toggle.data('hidden-text')) {
+            toggle.html(toggle.data('hidden-text'));
+        } else {
+            toggle.html('[+] View Demo');
+        }
+    },
+    visible: function(parent, toggle) { 
+        if (toggle.data('visible-text')) {
+            toggle.html(toggle.data('visible-text'));
+        } else {
+            toggle.html('[-] Hide Demo');
+        }
+    }
+});
+
+$('.collapsible-wrapper').collapsible({
+    toggleSelector: 'a.toggle',
+    hidden: function(parent, toggle) {
+        if (toggle.data('hidden-text')) {
+            toggle.html(toggle.data('hidden-text'));
+        } else {
+            toggle.html('[+] View Demo');
+        }
+    },
+    visible: function(parent, toggle) { 
+        if (toggle.data('visible-text')) {
+            toggle.html(toggle.data('visible-text'));
+        } else {
+            toggle.html('[-] Hide Demo');
+        }
+    }
+});
+</pre>
                 </div>
             </article>
             <footer>

@@ -1,6 +1,7 @@
 * { outline: none; line-height: normal !important; }
 body, html { margin: 0; padding: 0; }
 body { 
+	margin: 0 0 100px;
 	color: #4d4d4d;
 	background: url('images/vertical_cloth.png') repeat; 
 	font: 0.85em/1.25em 'Segoe UI', Arial, Tahoma, Sans-Serif; 

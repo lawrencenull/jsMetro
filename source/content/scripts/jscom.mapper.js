@@ -1,3 +1,8 @@
+/*
+	jscom.mapper.js
+	Copyright (C)2012 John Sedlak
+	http://github.com/jsedlak/jsMetro (Source, Readme & Licensing)
+*/
 (function ($) {
 	"use strict";
 	

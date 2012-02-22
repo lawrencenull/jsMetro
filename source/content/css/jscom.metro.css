@@ -138,6 +138,7 @@ body.green #JSNotification { background-color: #339933; }
 
 /* FORM ELEMENTS */
 input[type="text"],
+input[type="search"],
 input[type="password"],
 textarea {
     padding: 5px 10px;

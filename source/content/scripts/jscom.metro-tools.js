@@ -8,13 +8,13 @@
 
 	if(!$.js){
 		$.js = {
-			version: '1.2.4',
+			version: '1.2.5',
 			author: 'John Sedlak (kriscsc@msn.com)',
 			authorWebsite: 'http://johnsedlak.com',
 			website: 'https://github.com/jsedlak/jsMetro'
 		};
 	} else {
-		$.js.version = '1.2.4';
+		$.js.version = '1.2.5';
 	}
 	
 	$.js.themes = ['magenta', 'purple', 'teal', 'lime', 'brown', 'pink', 'orange', 'blue', 'red', 'green'];
@@ -95,6 +95,8 @@
 	DialogController.prototype = {
 		
 		init: function(options) {
+			var that = this;
+			
 			/* Setup the settings & options */
 			var defaults = { 
 				defaultClassString: 'button ',
@@ -119,11 +121,23 @@
 			this.buttonClasses = settings.buttonClasses;
 			this.callbacks = settings.callbacks;
 			this.buttonsElement.html(html);
+			
+			$('body').keydown(function(event) {
+				if (event.keyCode == 27) {
+					that.dialogElement.removeClass('visible');
+				}
+			});
 		},
 		
 		dialog: function(message) {
 			this.contentElement.html(message);
 			this.dialogElement.addClass('visible');
+			
+			var inputElement = this.dialogElement.find('input:eq(0)');
+			
+			if (inputElement != null && inputElement.length > 0){
+				inputElement.first().focus();
+			}
 		},
 		
 		buttonClicked: function(button, event) {

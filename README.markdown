@@ -4,7 +4,7 @@ jsMetro ([jsmetro.johnsedlak.com](http://jsmetro.johnsedlak.com)) is a set of jQ
 
 ## Releases
 
-* Latest [jsMetro 1.2.6](https://github.com/downloads/jsedlak/jsMetro/jsMetro-1.2.6.zip)
+* Latest - [jsMetro 1.2.6](https://github.com/downloads/jsedlak/jsMetro/jsMetro-1.2.6.zip)
 
 ## Getting Started
 

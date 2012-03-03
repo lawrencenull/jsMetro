@@ -30,10 +30,10 @@
 	background: #2d2d2d;
 	background: rgba(0, 0, 0, 0);
 	
-	-webkit-transition: all 0.1s ease-in-out;
-	-o-transition: all 0.1s ease-in-out;
-	-moz-transition: all 0.1s ease-in-out;
-	transition: all 0.1s ease-in-out;
+	-webkit-transition: all 0.5s ease-in-out;
+	-o-transition: 		all 0.5s ease-in-out;
+	-moz-transition: 	all 0.5s ease-in-out;
+	transition: 		all 0.5s ease-in-out;
 }
 
 #JSDialog.visible { top: 0%; background: rgba(0, 0, 0, 0.75); }
@@ -51,9 +51,9 @@
 	color: #fff;
 	
 	-webkit-transition: top 1s ease-in-out;
-	-o-transition: top 1s ease-in-out;
-	-moz-transition: top 1s ease-in-out;
-	transition: top 1s ease-in-out;
+	-o-transition: 		top 1s ease-in-out;
+	-moz-transition: 	top 1s ease-in-out;
+	transition: 		top 1s ease-in-out;
 }
 
 body.light #JSDialog>.dialog-panel { background: #fff; color: inherit; }

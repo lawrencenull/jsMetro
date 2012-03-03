@@ -59,9 +59,12 @@
 			bodyElement.data('jscom.DialogController', controller);
 		}
 		
-		controller.init(options);
+		/*controller.init(options);
 		if (message != null && message.length > 0) {
 			controller.dialog(message);
+		}*/
+		if (message != null && message.length > 0) {
+			controller.enqueue(message, options);
 		}
 		
 		return controller;
@@ -81,6 +84,9 @@
 		this.panelElement = $('#JSDialog .dialog-panel');
 		this.buttonsElement = $('#JSDialog .dialog-buttons');
 		this.contentElement = $('#JSDialog .dialog-content');
+		this.messageQueue = new Array();
+		this.activeMessage = null;
+		this.timerId = null;
 		
 		$('#JSDialog .dialog-buttons a').live(
 			'click',
@@ -100,56 +106,78 @@
 	};
 	
 	DialogController.prototype = {
-		
-		init: function(options) {
-			var that = this;
-			
+		enqueue: function(message, options) {
 			/* Setup the settings & options */
 			var defaults = { 
 				defaultClassString: 'button ',
 				buttons: [ 'Okay' ], 
 				buttonClasses: [ '' ],
-				callbacks: [ null ]
+				callbacks: [ null ],
+				html: '',
+				message: message
 			};
 			
+			// Extend with the provided options
 			var settings = $.extend(
 				{ }, 
 				defaults, 
 				options
 			);
 			
+			// Build the button HTML
 			var html = '';
 			for (var i = 0; i < settings.buttons.length; i++) {
 				html += '<a href="#" class="' + settings.defaultClassString + settings.buttonClasses[i] + '">' + settings.buttons[i] + '</a>&nbsp;';
 			}
+			settings.html = html;
 			
-			this.buttons = settings.buttons;
-			this.defaultClassString = settings.defaultClassString;
-			this.buttonClasses = settings.buttonClasses;
-			this.callbacks = settings.callbacks;
-			this.buttonsElement.html(html);
+			this.messageQueue.push(settings);
 			
-			
+			if (this.messageQueue.length == 1 && this.timerId == null && !this.dialogElement.hasClass('visible')) {
+				this.dequeue();
+			}
 		},
 		
-		dialog: function(message) {
-			this.contentElement.html(message);
+		dequeue: function() {
+			if (this.timerId != null) {
+				clearTimeout(this.timerId);
+				this.timerId = null;
+			}
+			
+			if (this.messageQueue.length == 0) {
+				return;
+			}
+			
+			var settings = this.messageQueue.shift();
+			
+			this.activeMessage = settings;
+			this.contentElement.html(settings.message);
+			this.buttonsElement.html(settings.html);
+			
 			this.dialogElement.addClass('visible');
 			
+			// Try to focus on the first input element
 			var inputElement = this.dialogElement.find('input:eq(0)');
-			
 			if (inputElement != null && inputElement.length > 0){
 				inputElement.first().focus();
 			}
 		},
 		
 		buttonClicked: function(button, event) {
+			var that = this;
+			
 			this.dialogElement.removeClass('visible');
 			
-			for (var i = 0; i < this.buttons.length; i++) {
-				if (this.buttons[i] == button.html()) {
-					if (this.callbacks != null) {
-						var callback = this.callbacks[i];
+			this.timerId = setTimeout(function() { that.dequeue(); }, 1000);
+			
+			var msg = this.activeMessage;
+			
+			// TODO: Find a better way to do this.
+			// Finds the index of the button and calls the appropriate callback if it exists
+			for (var i = 0; i < msg.buttons.length; i++) {
+				if (msg.buttons[i] == button.html()) {
+					if (msg.callbacks != null) {
+						var callback = msg.callbacks[i];
 						if (callback != null) {
 							callback(this, button, event);
 						}

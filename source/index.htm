@@ -98,6 +98,19 @@
                     );
                 });
 				
+				$('#HelloWorldDialog').click(function(event) {
+					event.preventDefault();
+					
+					$.js.dialog('<h3>The Dialog Title</h3><p>Hello, world!</p>');
+				});
+				
+				$('#QueueDialog').click(function(event) {
+					event.preventDefault();
+					
+					$.js.dialog('<h3>The Dialog Title</h3><p>Hello, world!</p>');
+					$.js.dialog('<h3>The Dialog Title</h3><p>Hello, world! The sequel!</p>');
+				});
+				
 				var cancelCallback = function(controller, button, event) {
 					$.js.dialog('Cancel was clicked!');
 				};
@@ -110,7 +123,7 @@
 					event.preventDefault();
 					
 					$.js.dialog(
-						'<p>Would you like to continue?</p>',
+						'<h3>Callbacks Sample</h3><p>Would you like to continue?</p>',
 						{
 							buttons: [ 'Cancel', 'Continue' ],
 							buttonClasses: [ 'previous icon button', 'next icon button' ],
@@ -189,24 +202,38 @@
 				<h3>Signature</h3>
 				<pre>$.js.dialog(message, options)</pre>
 				
-				<h3>Demos</h3>
+				<h3>Basic Dialog</h3>
+				<p>The simplest way to use Dialog is to call it with just an HTML string containing your message.</p>
+				<p><a href="#" class="next icon button" id="HelloWorldDialog">Hello, world!</a></p>
+				<h4>jQuery</h4>
+				<pre>$.js.dialog('&lt;h3&gt;The Dialog Title&lt;/h3&gt;&lt;p&gt;Hello, world!&lt;/p&gt;');</pre>
+				
+				<h3>Queueing</h3>
+				<p>The Dialog function can also queue up multiple messages. It works in a fire-and-forget fashion as demonstrated below.</p>
+				<p><a href="#" class="next icon button" id="QueueDialog">Queue 2 Messages</a></p>
+				<h4>jQuery</h4>
+<pre>$.js.dialog('&lt;h3&gt;The Dialog Title&lt;/h3&gt;&lt;p&gt;Hello, world!&lt;/p&gt;');
+$.js.dialog('&lt;h3&gt;The Dialog Title&lt;/h3&gt;&lt;p&gt;Hello, world! The sequel!&lt;/p&gt;');</pre>
+				
+				<h3>Dialog w/ Callbacks</h3>
 				<p>To display a Dialog, just call <code>$.js.dialog</code> with a few settings. The DOM manipulation is taken care of by the plugin, so there is work to do outside of the Javascript call. <strong>Note</strong>: The order of all the options (<code>buttons</code>, <code>buttonClasses</code>, <code>callbacks</code>) matters - the function relies on these being in the same order.</p>
 				<p><a href="#" class="next icon button" id="BasicDialog">Basic Dialog</a></p>
 				
 				<h4>jQuery</h4>
 <pre>var cancelCallback = function(controller, button, event) {
-	alert('Cancel was clicked!');
+	$.js.dialog('Cancel was clicked!');
 };
 
 var continueCallback = function(c, b, e) {
-	alert('Continue was clicked!');
+	$.js.dialog('Continue was clicked!');
 };
+
 
 $('#BasicDialog').click(function(event) {
 	event.preventDefault();
 	
 	$.js.dialog(
-		'&lt;p&gt;Would you like to continue?&lt;/p&gt;',
+		'&lt;h3&gt;Callbacks Sample&lt;/h3&gt;&lt;p&gt;Would you like to continue?&lt;/p&gt;',
 		{
 			buttons: [ 'Cancel', 'Continue' ],
 			buttonClasses: [ 'previous icon', 'next icon' ],

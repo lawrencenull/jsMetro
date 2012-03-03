@@ -59,10 +59,6 @@
 			bodyElement.data('jscom.DialogController', controller);
 		}
 		
-		/*controller.init(options);
-		if (message != null && message.length > 0) {
-			controller.dialog(message);
-		}*/
 		if (message != null && message.length > 0) {
 			controller.enqueue(message, options);
 		}

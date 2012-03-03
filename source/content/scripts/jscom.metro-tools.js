@@ -90,6 +90,13 @@
 				that.buttonClicked($(this), event);
 			}
 		);
+		
+		$('body').keydown(function(event) {
+			// Check for escape key
+			if (event.keyCode == 27) {
+				that.dialogElement.removeClass('visible');
+			}
+		});
 	};
 	
 	DialogController.prototype = {
@@ -122,11 +129,7 @@
 			this.callbacks = settings.callbacks;
 			this.buttonsElement.html(html);
 			
-			$('body').keydown(function(event) {
-				if (event.keyCode == 27) {
-					that.dialogElement.removeClass('visible');
-				}
-			});
+			
 		},
 		
 		dialog: function(message) {

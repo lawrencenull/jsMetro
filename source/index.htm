@@ -32,6 +32,7 @@
 				/* Pre/Initialization */
 				$.js.notify();
 				$.js.dialog();
+				
                 $('#MetroVersion').html($.js.version);
 				
 				/* Header Links */
@@ -98,11 +99,11 @@
                 });
 				
 				var cancelCallback = function(controller, button, event) {
-					alert('Cancel was clicked!');
+					$.js.dialog('Cancel was clicked!');
 				};
 
 				var continueCallback = function(c, b, e) {
-					alert('Continue was clicked!');
+					$.js.dialog('Continue was clicked!');
 				};
 
 				$('#BasicDialog').click(function(event) {

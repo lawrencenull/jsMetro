@@ -100,9 +100,9 @@
 			/* Setup the settings & options */
 			var defaults = { 
 				defaultClassString: 'button ',
-				buttons: [ 'No', 'Yes' ], 
-				buttonClasses: [ '', '' ],
-				callbacks: [ null, null ]
+				buttons: [ 'Okay' ], 
+				buttonClasses: [ '' ],
+				callbacks: [ null ]
 			};
 			
 			var settings = $.extend(

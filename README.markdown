@@ -2,6 +2,10 @@
 
 jsMetro ([jsmetro.johnsedlak.com](http://jsmetro.johnsedlak.com)) is a set of jQuery/js functions created with a goal of bringing Metro design elements to the web. The secondary goal is to learn about jQuery plugin and general javascript development.
 
+## Releases
+
+* Latest [jsMetro 1.2.6](https://github.com/downloads/jsedlak/jsMetro/jsMetro-1.2.6.zip)
+
 ## Getting Started
 
 The easiest way to get started is to view the samples at [jsmetro.johnsedlak.com](http://jsmetro.johnsedlak.com) which is a live version of the master branch. The jsMetro Framework includes **Notify**, **Dialog**, **Collapsible**, **ScrollTo**, **Map** and some associated HTML/CSS tools & styles.

@@ -61,9 +61,50 @@ You can, of course, supply your own custom buttons for the dialog and have metho
 
 The Collapsible function ($.fn.collapsible) collapses elements and allows users to toggle visibility via a second element.
 
+**HTML**
+
+    <div class="collapsible-wrapper">
+        <p><a href="#" class="toggle button">[+] Expand</a></p>
+        <pre class="collapsible">sample block
+        </pre>
+    </div>
+	
+**jQuery**
+
+    $('.collapsible-wrapper').collapsible({
+        toggleSelector: 'a.toggle',
+        hidden: function(parent, toggle) {
+            if (toggle.data('hidden-text')) {
+                toggle.html(toggle.data('hidden-text'));
+            } else {
+                toggle.html('[+] View Demo');
+            }
+        },
+        visible: function(parent, toggle) { 
+            if (toggle.data('visible-text')) {
+                toggle.html(toggle.data('visible-text'));
+            } else {
+                toggle.html('[-] Hide Demo');
+            }
+        }
+    });
+
 ### ScrollTo
 
-ScrollTo ($.fn.scrollTo) provides smoothly animated scrolling to any element.
+ScrollTo ($.fn.scrollTo) provides smoothly animated scrolling to any element. The sample uses this for the main navigation.
+
+    $('#Page>header ul a').click(function(event) {
+    	event.preventDefault();
+    	
+    	var that = $(this);
+    	var scrollDestination = $('a[name="' + that.attr('href').substr(1) + '"]');
+    	
+    	if (window.history && window.history.pushState) {
+    		window.history.pushState('', scrollDestination.html() + ' - jsMetro Demos', that.attr('href'))
+    	}
+    	
+    	scrollDestination.scrollTo();
+    });
 
 ### Map
 

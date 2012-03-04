@@ -110,6 +110,25 @@ ScrollTo ($.fn.scrollTo) provides smoothly animated scrolling to any element. Th
 
 Map ($.js.map) is a basic data-to-DOM mapping function to help populate the DOM with JSON data.
 
+### Theming
+
+jsMetro has builtin theming support for the native color swatches for Windows Phone 7.
+
+    $.js.theme('pink');
+	
+Any of the following values are valid, though more can be added via CSS:
+
+* blue
+* magenta
+* purple
+* teal
+* lime
+* brown
+* pink
+* orange
+* red
+* green
+
 ## Contributing
 
 If you want to help/contribute, I am looking for complete Metro widgets and the like that follow the specs & guidelines set forth by the existing js files. In the future I will update this with a stricter set of guidelines.

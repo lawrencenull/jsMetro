@@ -14,9 +14,48 @@ The easiest way to get started is to view the samples at [jsmetro.johnsedlak.com
 
 Notify ($.js.notify) is a simple function that creates a WP7-like Notification at the top of the browser window.
 
+    $.js.notify('hello, world');
+
 ### Dialog
 
 Dialog (WIP) ($.js.dialog) creates a modal dialog with programmable options and content.
+
+**Simple**
+
+    $.js.dialog('<h3>The Dialog Title</h3><p>Hello, world!</p>');
+
+**Queueing**
+
+Dialog supports queuing automatically. Supply more than one message at a time and it will display them in sequence.
+
+    $.js.dialog('<h3>The Dialog Title</h3><p>Hello, world!</p>');
+    $.js.dialog('<h3>The Dialog Title</h3><p>Hello, world! The sequel!</p>');
+
+**Dialog Options**
+
+You can, of course, supply your own custom buttons for the dialog and have methods called when one of this buttons is clicked.
+    
+    var cancelCallback = function(controller, button, event) {
+    	$.js.dialog('Cancel was clicked!');
+    };
+    
+    var continueCallback = function(c, b, e) {
+    	$.js.dialog('Continue was clicked!');
+    };
+    
+    
+    $('#BasicDialog').click(function(event) {
+    	event.preventDefault();
+    	
+    	$.js.dialog(
+    		'<h3>Callbacks Sample</h3><p>Would you like to continue?</p>',
+    		{
+    			buttons: [ 'Cancel', 'Continue' ],
+    			buttonClasses: [ 'previous icon', 'next icon' ],
+    			callbacks: [ cancelCallback, continueCallback ]
+    		}
+    	);
+    });
 
 ### Collapsible
 

@@ -269,43 +269,51 @@ input.button {
 .icon.button { 
 	padding-left: 35px;
 	padding-right: 12px;	
+	background-image: url('images/icons/metro-white.png');
 	background-repeat: no-repeat; 
 	background-position: 11px center; 
 }
 
-.add.icon.button { background-image: url('images/icons/white/add.png'); }
-.back.icon.button { background-image: url('images/icons/white/back.png'); }
-.camera.icon.button { background-image: url('images/icons/white/camera.png'); }
-.cancel.icon.button { background-image: url('images/icons/white/cancel.png'); }
-.check.icon.button { background-image: url('images/icons/white/check.png'); }
-.delete.icon.button { background-image: url('images/icons/white/delete.png'); }
-.download.icon.button { background-image: url('images/icons/white/download.png'); }
-.edit.icon.button { background-image: url('images/icons/white/edit.png'); }
-.add-to-favs.icon.button { background-image: url('images/icons/white/favs.addto.png'); }
-.favs.icon.button { background-image: url('images/icons/white/favs.png'); }
-.ff.icon.button { background-image: url('images/icons/white/ff.png'); }
-.flag.icon.button { background-image: url('images/icons/white/flag.png'); }
-.folder.icon.button { background-image: url('images/icons/white/folder.png'); }
-.heart.icon.button { background-image: url('images/icons/white/heart.png'); }
-.info.icon.button { background-image: url('images/icons/white/i.png'); }
-.mail.icon.button { background-image: url('images/icons/white/mail.png'); }
-.minus.icon.button { background-image: url('images/icons/white/minus.png'); }
-.next.icon.button { background-image: url('images/icons/white/next.png'); }
-.previous.icon.button { background-image: url('images/icons/white/prev.png'); }
-.overflow.icon.button { background-image: url('images/icons/white/overflowdots.png'); }
-.parent.icon.button { background-image: url('images/icons/white/parent.png'); }
-.pause.icon.button { background-image: url('images/icons/white/pause.png'); }
-.phone.icon.button { background-image: url('images/icons/white/phone.png'); }
-.play.icon.button { background-image: url('images/icons/white/play.png'); }
-.question.icon.button { background-image: url('images/icons/white/questionmark.png'); }
-.refresh.icon.button { background-image: url('images/icons/white/refresh.png'); }
-.rew.icon.button { background-image: url('images/icons/white/rew.png'); }
-.save.icon.button { background-image: url('images/icons/white/save.png'); }
-.search.icon.button { background-image: url('images/icons/white/search.png'); }
-.settings.icon.button { background-image: url('images/icons/white/settings.png'); }
-.share.icon.button { background-image: url('images/icons/white/share.png'); }
-.upload.icon.button { background-image: url('images/icons/white/upload.png'); }
-.video.icon.button { background-image: url('images/icons/white/video.png'); }
+.base.icon.button {				background-position: 10px -3px; }
+.overflow.icon.button { 		background-position: 10px -33px; }
+.parent.icon.button { 			background-position: 10px -63px; }
+.next.icon.button { 			background-position: 10px -93px; }
+.previous.icon.button,
+.back.icon.button { 			background-position: 10px -123px; }
+.up.icon.button { 				background-position: 10px -153px; }
+.down.icon.button {				background-position: 10px -183px; }
+.download.icon.button { 		background-position: 10px -213px; }
+.upload.icon.button { 			background-position: 10px -243px; }
+.cancel.icon.button { 			background-position: 10px -273px; }
+.check.icon.button,	
+.checkmark.icon.button { 		background-position: 10px -303px; }
+.save.icon.button { 			background-position: 10px -333px; }
+.edit.icon.button { 			background-position: 10px -363px; }
+.delete.icon.button { 			background-position: 10px -393px; }
+.folder.icon.button { 			background-position: 10px -423px; }
+.info.icon.button { 			background-position: 10px -453px; }
+.question.icon.button,
+.question-mark.icon.button { 	background-position: 10px -483px; }
+.minus.icon.button { 			background-position: 10px -513px; }
+.add.icon.button { 				background-position: 10px -543px; }
+.refresh.icon.button { 			background-position: 10px -573px; }
+.favs.icon.button { 			background-position: 10px -603px; }
+.add-to-favs.icon.button { 		background-position: 10px -633px; }
+.heart.icon.button { 			background-position: 10px -663px; }
+.search.icon.button { 			background-position: 10px -693px; }
+.share.icon.button { 			background-position: 10px -723px; }
+.play.icon.button { 			background-position: 10px -753px; }
+.pause.icon.button { 			background-position: 10px -783px; }
+.ff.icon.button,
+.fast-forward.icon.button { 	background-position: 10px -813px; }
+.rew.icon.button,
+.rewind.icon.button { 			background-position: 10px -843px; }
+.settings.icon.button { 		background-position: 10px -873px; }
+.phone.icon.button { 			background-position: 10px -903px; }
+.mail.icon.button { 			background-position: 10px -933px; }
+.video.icon.button { 			background-position: 10px -963px; }
+.camera.icon.button { 			background-position: 10px -993px; }
+.flag.icon.button { 			background-position: 10px -1023px; }
 
 /* SCROLLBAR THEMING SUPPORT */
 *::-webkit-scrollbar {

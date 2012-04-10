@@ -266,13 +266,65 @@ input.button {
 	body.magenta .button:active { color: #fff; background-color: #ff0097; }
 	
 /* ICON SUPPORT */
+.icon { 
+	padding-right: 12px;
+    padding-left: 38px;
+	background-image: url('images/metro-black.png');
+	background-repeat: no-repeat; 
+	
+}
+
 .icon.button { 
 	padding-left: 35px;
 	padding-right: 12px;	
-	background-image: url('images/icons/metro-white.png');
+	background-image: url('images/metro-white.png');
 	background-repeat: no-repeat; 
 	background-position: 11px center; 
 }
+
+.base.icon {			background-position: 0px -3px; }
+.overflow.icon { 		background-position: 0px -33px; }
+.parent.icon { 			background-position: 0px -63px; }
+.next.icon { 			background-position: 0px -93px; }
+.previous.icon,
+.back.icon { 			background-position: 0px -123px; }
+.up.icon { 				background-position: 0px -153px; }
+.down.icon {			background-position: 0px -183px; }
+.download.icon { 		background-position: 0px -213px; }
+.upload.icon { 			background-position: 0px -243px; }
+.cancel.icon { 			background-position: 0px -273px; }
+.check.icon,	
+.checkmark.icon { 		background-position: 0px -303px; }
+.save.icon { 			background-position: 0px -333px; }
+.edit.icon { 			background-position: 0px -363px; }
+.delete.icon { 			background-position: 0px -393px; }
+.folder.icon { 			background-position: 0px -423px; }
+.info.icon { 			background-position: 0px -453px; }
+.question.icon,
+.question-mark.icon { 	background-position: 0px -483px; }
+.minus.icon { 			background-position: 0px -513px; }
+.add.icon { 			background-position: 0px -543px; }
+.refresh.icon { 		background-position: 0px -573px; }
+.favs.icon { 			background-position: 0px -603px; }
+.add-to-favs.icon { 	background-position: 0px -633px; }
+.heart.icon { 			background-position: 0px -663px; }
+.search.icon { 			background-position: 0px -693px; }
+.share.icon { 			background-position: 0px -723px; }
+.play.icon { 			background-position: 0px -753px; }
+.pause.icon { 			background-position: 0px -783px; }
+.ff.icon,
+.fast-forward.icon { 	background-position: 0px -813px; }
+.rew.icon,
+.rewind.icon { 			background-position: 0px -843px; }
+.settings.icon { 		background-position: 0px -873px; }
+.phone.icon { 			background-position: 0px -903px; }
+.mail.icon { 			background-position: 0px -933px; }
+.video.icon { 			background-position: 0px -963px; }
+.camera.icon { 			background-position: 0px -993px; }
+.flag.icon { 			background-position: 0px -1023px; }
+.archive.icon {		    background-position: 0px -1053px; }
+.unarchive.icon {		background-position: 0px -1083px; }
+.user.icon {            background-position: 0px -1113px; }
 
 .base.icon.button {				background-position: 10px -3px; }
 .overflow.icon.button { 		background-position: 10px -33px; }
